@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import glamorous from "glamorous";
 
-class Bar extends Component {
+class Header extends Component {
   render() {
     const GAppBar = glamorous(AppBar)({
       zIndex: "1500 !important"
@@ -22,6 +22,6 @@ class Bar extends Component {
   }
 }
 
-Bar.propTypes = {};
+Header.propTypes = {};
 
-export default Bar;
+export default Header;

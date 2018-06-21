@@ -4,11 +4,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import { mailFolderListItems } from "./Models";
-import Content from "./Content";
-import Bar from "./Bar";
+import ModelItem from "./ModelItem";
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -30,33 +28,35 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar
 });
 
-class ClippedDrawer extends Component {
+class ModelList extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, data } = this.props;
     return (
-      <div className={classes.root}>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper
-          }}
-        >
-          <div className={classes.toolbar} />
-          <List>{mailFolderListItems}</List>
-          <Divider />
-        </Drawer>
-        <Bar />
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <Content />
-        </main>
-      </div>
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: classes.drawerPaper
+        }}
+      >
+        <div className={classes.toolbar} />
+        {data.map((model, index) => {
+          return (
+            <ModelItem
+              key={"model_" + index}
+              primary={model.name}
+              secondary={model.task_extended}
+              thumbnail={model.url + "thumbnail/thumbnail.jpg"}
+            />
+          );
+        })}
+        <Divider />
+      </Drawer>
     );
   }
 }
 
-ClippedDrawer.propTypes = {
+ModelList.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ClippedDrawer);
+export default withStyles(styles)(ModelList);
