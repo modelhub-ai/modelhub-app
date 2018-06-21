@@ -5,8 +5,10 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ModelItem from "./ModelItem";
+import MenuList from "@material-ui/core/MenuList";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
-const drawerWidth = 270;
+const drawerWidth = 340;
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -29,28 +31,40 @@ const styles = theme => ({
 });
 
 class ModelList extends Component {
+  dummy() {
+    console.log("click away");
+  }
   render() {
-    const { classes, data } = this.props;
+    const { classes, data, handleModelChoice, currentModelIndex } = this.props;
     return (
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper
-        }}
-      >
-        <div className={classes.toolbar} />
-        {data.map((model, index) => {
-          return (
-            <ModelItem
-              key={"model_" + index}
-              primary={model.name}
-              secondary={model.task_extended}
-              thumbnail={model.url + "thumbnail/thumbnail.jpg"}
-            />
-          );
-        })}
-        <Divider />
-      </Drawer>
+      <ClickAwayListener onClickAway={this.dummy}>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: classes.drawerPaper
+          }}
+          SlideProps={{ unmountOnExit: true }}
+        >
+          <MenuList>
+            <div className={classes.toolbar} />
+            {data.map((model, index) => {
+              return (
+                <div key={"model_" + index}>
+                  <ModelItem
+                    value={index}
+                    primary={model.name}
+                    secondary={model.task_extended}
+                    thumbnail={model.url + "thumbnail/thumbnail.jpg"}
+                    handleModelChoice={handleModelChoice}
+                    currentModelIndex={currentModelIndex}
+                  />
+                  <Divider />
+                </div>
+              );
+            })}
+          </MenuList>
+        </Drawer>
+      </ClickAwayListener>
     );
   }
 }

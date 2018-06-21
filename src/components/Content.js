@@ -15,21 +15,23 @@ const styles = theme => ({
 
 class Content extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, data, currentModelIndex } = this.props;
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography noWrap>
-          {"You think water moves fast? You should see ice."}
-        </Typography>
-        <SimpleExpansionPanel />
+        {currentModelIndex === -1 ? "welcome!" : data[currentModelIndex].name}
       </main>
     );
   }
 }
 
 Content.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(Content);
+// <Typography noWrap>
+//   {"You think water moves fast? You should see ice."}
+// </Typography>
+// <SimpleExpansionPanel />

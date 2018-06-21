@@ -13,11 +13,26 @@ const GDiv = glamorous.div({
   display: "flex"
 });
 class ModelHub extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentModelIndex: -1
+    };
+    this.handleModelChoice = this.handleModelChoice.bind(this);
+  }
+  handleModelChoice(event) {
+    this.setState({ currentModelIndex: event.currentTarget.value });
+  }
   render() {
+    const { currentModelIndex } = this.state;
     return (
       <GDiv>
-        <ModelList data={data} />
-        <Content />
+        <ModelList
+          data={data}
+          handleModelChoice={this.handleModelChoice}
+          currentModelIndex={currentModelIndex}
+        />
+        <Content data={data} currentModelIndex={currentModelIndex} />
       </GDiv>
     );
   }
