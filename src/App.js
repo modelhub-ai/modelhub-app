@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import glamorous from "glamorous";
-import PropTypes from "prop-types";
 import Header from "./components/Header";
 import ModelHub from "./components/ModelHub";
 
@@ -14,7 +12,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {};
 
 export default App;

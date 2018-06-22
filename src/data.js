@@ -8,13 +8,13 @@ const data = [
   {
     id: "985c8604-1381-4ebf-85af-bfe32080fb55",
     name: "CardiacFCN",
-    url: "http://localhost:4000/api/",
+    url: "http://localhost:4002/api/",
     task_extended: "Segmenting the right ventricle in MRI"
   },
   {
     id: "ccc16d36-d788-43eb-9e53-2125c97888df",
     name: "CascadedFCN_Liver",
-    url: "http://localhost:4000/api/",
+    url: "http://localhost:4004/api/",
     task_extended: "Liver and liver lesion segmentation"
   }
 ];

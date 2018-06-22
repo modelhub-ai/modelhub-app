@@ -21,7 +21,7 @@ class Content extends Component {
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ContentTabs />
+        <ContentTabs data={data} />
         <div className={classes.toolbar} />
         {data.name}
       </main>
@@ -31,7 +31,7 @@ class Content extends Component {
 
 Content.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.array.isRequired
+  data: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Content);
@@ -39,3 +39,7 @@ export default withStyles(styles)(Content);
 //   {"You think water moves fast? You should see ice."}
 // </Typography>
 // <SimpleExpansionPanel />
+//
+// that.setState({ posts: result.data.children, lastPostName: result.data.children[result.data.children.length - 1].data.name });
+//
+// console.log(that.state.posts);

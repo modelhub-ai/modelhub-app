@@ -21,15 +21,17 @@ class Welcome extends Component {
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography noWrap>Welcome to modelhub!</Typography>
+        <Typography noWrap>
+          Welcome to modelhub!<br />Plug & Predict solutions for medical AI
+          research<br />select a model to start
+        </Typography>
       </main>
     );
   }
 }
 
 Welcome.propTypes = {
-  classes: PropTypes.object.isRequired,
-  data: PropTypes.array.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Welcome);

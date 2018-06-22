@@ -6,13 +6,6 @@ import Content from "./Content";
 import Welcome from "./Welcome";
 import data from "../data";
 
-const GDiv = glamorous.div({
-  flexGrow: 1,
-  zIndex: 1,
-  overflow: "hidden",
-  position: "relative",
-  display: "flex"
-});
 class ModelHub extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +19,13 @@ class ModelHub extends Component {
   }
   render() {
     const { currentModelIndex } = this.state;
+    const GDiv = glamorous.div({
+      flexGrow: 1,
+      zIndex: 1,
+      overflow: "hidden",
+      position: "relative",
+      display: "flex"
+    });
     return (
       <GDiv>
         <ModelList
