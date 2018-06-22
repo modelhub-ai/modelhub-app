@@ -15,27 +15,21 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar
 });
 
-class Content extends Component {
+class Welcome extends Component {
   render() {
-    const { classes, data } = this.props;
+    const { classes } = this.props;
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ContentTabs />
-        <div className={classes.toolbar} />
-        {data.name}
+        <Typography noWrap>Welcome to modelhub!</Typography>
       </main>
     );
   }
 }
 
-Content.propTypes = {
+Welcome.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired
 };
 
-export default withStyles(styles)(Content);
-// <Typography noWrap>
-//   {"You think water moves fast? You should see ice."}
-// </Typography>
-// <SimpleExpansionPanel />
+export default withStyles(styles)(Welcome);

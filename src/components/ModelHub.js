@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import glamorous from "glamorous";
 import ModelList from "./ModelList";
 import Content from "./Content";
+import Welcome from "./Welcome";
 import data from "../data";
 
 const GDiv = glamorous.div({
@@ -32,7 +33,11 @@ class ModelHub extends Component {
           handleModelChoice={this.handleModelChoice}
           currentModelIndex={currentModelIndex}
         />
-        <Content data={data} currentModelIndex={currentModelIndex} />
+        {currentModelIndex === -1 ? (
+          <Welcome />
+        ) : (
+          <Content data={data[currentModelIndex]} />
+        )}
       </GDiv>
     );
   }
