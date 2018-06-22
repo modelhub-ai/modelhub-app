@@ -3,6 +3,8 @@ import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import SimpleExpansionPanel from "./SimpleExpansionPanel";
+import ContentTabs from "./ContentTabs";
+
 const styles = theme => ({
   content: {
     flexGrow: 1,
@@ -19,6 +21,9 @@ class Content extends Component {
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <ContentTabs />
+        <div className={classes.toolbar} />
+
         {currentModelIndex === -1 ? "welcome!" : data[currentModelIndex].name}
       </main>
     );
