@@ -1,38 +1,32 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Avatar from "@material-ui/core/Avatar";
-import MenuItem from "@material-ui/core/MenuItem";
-import Paper from "@material-ui/core/Paper";
-import { withStyles } from "@material-ui/core/styles";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
-import SendIcon from "@material-ui/icons/Send";
-import Divider from "@material-ui/core/Divider";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import glamorous from 'glamorous';
+import Avatar from '@material-ui/core/Avatar';
+import MenuItem from '@material-ui/core/MenuItem';
+import {withStyles} from '@material-ui/core/styles';
+import ListItemText from '@material-ui/core/ListItemText';
 
-const styles = theme => ({
+const styles = (theme) => ({
   menuItem: {
-    height: 60
-    // "&:focus": {
-    //   backgroundColor: "#696969", // theme.palette.primary.main,
-    //   "& $primary, & $icon": {
-    //     // color: theme.palette.common.white
-    //   }
-    // }
-  },
-  primary: {},
-  icon: {},
-  bigAvatar: {
-    width: 60,
     height: 60,
-    margin: 0,
-    borderRadius: 0
-  }
+  },
 });
-
+/**
+ * ModelItem class
+ * @extends Component
+ */
 class ModelItem extends Component {
+  /**
+   * Renders ModelItem
+   * @return {ReactElement}
+   */
   render() {
+    const GAvatar = glamorous(Avatar)({
+      width: '60px !important',
+      height: '60px !important',
+      margin: 0,
+      borderRadius: '0px !important',
+    });
     const {
       classes,
       value,
@@ -40,22 +34,17 @@ class ModelItem extends Component {
       secondary,
       thumbnail,
       handleModelChoice,
-      currentModelIndex
+      currentModelIndex,
     } = this.props;
     return (
       <MenuItem
         value={value}
         onClick={handleModelChoice}
         className={classes.menuItem}
-        selected={currentModelIndex == value}
+        selected={currentModelIndex === value}
       >
-        <Avatar className={classes.bigAvatar} alt={primary} src={thumbnail} />
-        <ListItemText
-          classes={{ primary: classes.primary }}
-          inset
-          primary={primary}
-          secondary={secondary}
-        />
+        <GAvatar alt={primary} src={thumbnail} />
+        <ListItemText inset primary={primary} secondary={secondary} />
       </MenuItem>
     );
   }
@@ -66,7 +55,9 @@ ModelItem.propTypes = {
   value: PropTypes.number.isRequired,
   primary: PropTypes.string.isRequired,
   secondary: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired
+  thumbnail: PropTypes.string.isRequired,
+  handleModelChoice: PropTypes.func.isRequired,
+  currentModelIndex: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(ModelItem);

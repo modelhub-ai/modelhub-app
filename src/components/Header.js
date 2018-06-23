@@ -1,14 +1,21 @@
-import React, { Component } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import PropTypes from "prop-types";
-import glamorous from "glamorous";
+import React, {Component} from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import glamorous from 'glamorous';
 
+/**
+ * Header
+ * @extends Component
+ */
 class Header extends Component {
+  /**
+   * Render
+   * @return {ReactElement}
+   */
   render() {
     const GAppBar = glamorous(AppBar)({
-      zIndex: "1500 !important"
+      zIndex: '1500 !important',
     });
     return (
       <GAppBar position="absolute">
@@ -21,7 +28,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {};
 
 export default Header;

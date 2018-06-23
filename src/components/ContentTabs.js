@@ -1,74 +1,59 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import SwipeableViews from "react-swipeable-views";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import TabContainer from "./TabContainer";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
+import SwipeableViews from 'react-swipeable-views';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import TabContainer from './TabContainer';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper
-    // width: 500
-  }
+    backgroundColor: theme.palette.background.paper,
+  },
 });
 
+/**
+ * ContentTabs Class
+ * @extends Component
+ */
 class ContentTabs extends Component {
-  constructor(props) {
-    super(props);
+  /**
+   * Constructor
+   */
+  constructor() {
+    super();
     this.state = {
       value: 0,
-      config: {},
-      tabs: []
     };
-    this.fetchConfig = this.fetchConfig.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeIndex = this.handleChangeIndex.bind(this);
   }
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
-  handleChangeIndex = index => {
-    this.setState({ value: index });
-  };
-
-  fetchConfig(url) {
-    let that = this;
-    fetch(url)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(config) {
-        const tabs = that.createTabList(config);
-        that.setState({ config: config, tabs: tabs });
-      });
+  /**
+   * Handles change
+   * @param  {event} event mouse event
+   * @param  {number} value current value
+   */
+  handleChange(event, value) {
+    this.setState({value});
   }
 
-  createTabList(config) {
-    let tabs = [
-      { name: "Overview", visible: true },
-      {
-        name: "Publication",
-        visible: config.publication != undefined ? true : false
-      },
-      {
-        name: "Model",
-        visible: config.viewer != undefined ? true : false
-      },
-      { name: "Test", visible: true },
-      { name: "Installation", visible: true }
-    ];
-    return tabs;
-  }
-  componentWillMount() {
-    this.fetchConfig(this.props.data.url + "get_config");
+  /**
+   * Handles onChange
+   * @param  {number} index tab value
+   */
+  handleChangeIndex(index) {
+    this.setState({value: index});
   }
 
+  /**
+   * Renders ContentTabs
+   * @return {ReactElement}
+   */
   render() {
-    const { classes, theme } = this.props;
-    const { config, tabs } = this.state;
-    const tabsFiletred = tabs.filter(tab => {
+    const {classes, theme, tabs} = this.props; // config
+    const tabsFiletred = tabs.filter((tab) => {
       return tab.visible === true;
     });
     return (
@@ -88,17 +73,15 @@ class ContentTabs extends Component {
           </Tabs>
         </AppBar>
         <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
           {tabsFiletred.map((tab, index) => {
             return (
-              <TabContainer
-                key={index}
-                dir={theme.direction}
-                children={"hi " + tab.name}
-              />
+              <TabContainer key={index} dir={theme.direction}>
+                {tab.name}
+              </TabContainer>
             );
           })}
         </SwipeableViews>
@@ -109,7 +92,9 @@ class ContentTabs extends Component {
 
 ContentTabs.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  config: PropTypes.object.isRequired,
+  tabs: PropTypes.array.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(ContentTabs);
+export default withStyles(styles, {withTheme: true})(ContentTabs);
