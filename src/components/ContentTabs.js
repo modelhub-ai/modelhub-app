@@ -52,7 +52,7 @@ class ContentTabs extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {classes, theme, tabs} = this.props; // config
+    const {classes, theme, config, tabs} = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
@@ -76,9 +76,12 @@ class ContentTabs extends Component {
         >
           {tabs.map((tab, index) => {
             return (
-              <TabContainer key={index} dir={theme.direction}>
-                {tab.name}
-              </TabContainer>
+              <TabContainer
+                key={index}
+                dir={theme.direction}
+                config={config}
+                tab={tab}
+              />
             );
           })}
         </SwipeableViews>

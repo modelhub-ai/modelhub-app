@@ -12,18 +12,20 @@ class TabContainer extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {children, dir} = this.props;
+    const {dir, config, tab} = this.props;
+    const Component = tab.component;
     return (
       <Typography component="div" dir={dir} style={{padding: 8 * 3}}>
-        {children}
+        <Component config={config} />
       </Typography>
     );
   }
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
   dir: PropTypes.string.isRequired,
+  config: PropTypes.object.isRequired,
+  tab: PropTypes.object.isRequired,
 };
 
 export default TabContainer;

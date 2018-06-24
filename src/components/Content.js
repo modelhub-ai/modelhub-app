@@ -5,6 +5,10 @@ import ContentTabs from './ContentTabs';
 import Footer from './Footer';
 //
 import Overview from './tabs/Overview';
+import Publication from './tabs/Publication';
+import Model from './tabs/Model';
+import Test from './tabs/Test';
+import Installation from './tabs/Installation';
 
 const styles = (theme) => ({
   content: {
@@ -41,17 +45,31 @@ class Content extends Component {
    */
   createTabList(config) {
     let tabs = [
-      {name: 'Overview', component: Overview, visible: true},
+      {
+        name: 'Overview',
+        component: Overview,
+        visible: true,
+      },
       {
         name: 'Publication',
+        component: Publication,
         visible: config.publication !== undefined ? true : false,
       },
       {
         name: 'Model',
+        component: Model,
         visible: config.viewer !== undefined ? true : false,
       },
-      {name: 'Test', visible: true},
-      {name: 'Installation', visible: true},
+      {
+        name: 'Test',
+        component: Test,
+        visible: true,
+      },
+      {
+        name: 'Installation',
+        component: Installation,
+        visible: true,
+      },
     ];
     return tabs;
   }
