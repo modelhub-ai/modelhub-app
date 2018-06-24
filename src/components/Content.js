@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import ContentTabs from './ContentTabs';
 import Footer from './Footer';
+//
+import Overview from './tabs/Overview';
 
 const styles = (theme) => ({
   content: {
@@ -39,7 +41,7 @@ class Content extends Component {
    */
   createTabList(config) {
     let tabs = [
-      {name: 'Overview', visible: true},
+      {name: 'Overview', component: Overview, visible: true},
       {
         name: 'Publication',
         visible: config.publication !== undefined ? true : false,
@@ -68,7 +70,10 @@ class Content extends Component {
       .then(function(result) {
         if (key === 'config') {
           const tabs = that.createTabList(result);
-          that.setState({[key]: result, tabs: tabs});
+          const tabsFiletred = tabs.filter((tab) => {
+            return tab.visible === true;
+          });
+          that.setState({[key]: result, tabs: tabsFiletred});
         } else {
           that.setState({[key]: result});
         }

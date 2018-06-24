@@ -53,9 +53,6 @@ class ContentTabs extends Component {
    */
   render() {
     const {classes, theme, tabs} = this.props; // config
-    const tabsFiletred = tabs.filter((tab) => {
-      return tab.visible === true;
-    });
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
@@ -67,7 +64,7 @@ class ContentTabs extends Component {
             fullWidth
             centered
           >
-            {tabsFiletred.map((tab, index) => {
+            {tabs.map((tab, index) => {
               return <Tab key={index} label={tab.name} />;
             })}
           </Tabs>
@@ -77,7 +74,7 @@ class ContentTabs extends Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          {tabsFiletred.map((tab, index) => {
+          {tabs.map((tab, index) => {
             return (
               <TabContainer key={index} dir={theme.direction}>
                 {tab.name}
