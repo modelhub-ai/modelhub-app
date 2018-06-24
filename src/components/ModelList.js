@@ -1,76 +1,66 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ModelItem from "./ModelItem";
-import MenuList from "@material-ui/core/MenuList";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
+import ModelItem from './ModelItem';
+import MenuList from '@material-ui/core/MenuList';
 
-const drawerWidth = 340;
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    zIndex: 1,
-    overflow: "hidden",
-    position: "relative",
-    display: "flex"
-  },
+const styles = (theme) => ({
   drawerPaper: {
-    position: "relative",
-    width: drawerWidth
+    position: 'relative',
+    width: 340,
   },
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-    minWidth: 0
-  },
-  toolbar: theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
 });
 
+/**
+ * ModelList Class
+ * @extends Component
+ */
 class ModelList extends Component {
-  dummy() {
-    console.log("click away");
-  }
+  /**
+   * Renders ModelList
+   * @return {ReactElement}
+   */
   render() {
-    const { classes, data, handleModelChoice, currentModelIndex } = this.props;
+    const {classes, data, handleModelChoice, currentModelIndex} = this.props;
     return (
-      <ClickAwayListener onClickAway={this.dummy}>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper
-          }}
-          SlideProps={{ unmountOnExit: true }}
-        >
-          <MenuList>
-            <div className={classes.toolbar} />
-            {data.map((model, index) => {
-              return (
-                <div key={"model_" + index}>
-                  <ModelItem
-                    value={index}
-                    primary={model.name}
-                    secondary={model.task_extended}
-                    thumbnail={model.url + "thumbnail/thumbnail.jpg"}
-                    handleModelChoice={handleModelChoice}
-                    currentModelIndex={currentModelIndex}
-                  />
-                  <Divider />
-                </div>
-              );
-            })}
-          </MenuList>
-        </Drawer>
-      </ClickAwayListener>
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        SlideProps={{unmountOnExit: true}}
+      >
+        <MenuList>
+          <div className={classes.toolbar} />
+          {data.map((model, index) => {
+            return (
+              <div key={'model_' + index}>
+                <ModelItem
+                  value={index}
+                  primary={model.name}
+                  secondary={model.task_extended}
+                  thumbnail={model.url + 'thumbnail/thumbnail.jpg'}
+                  handleModelChoice={handleModelChoice}
+                  currentModelIndex={currentModelIndex}
+                />
+                <Divider />
+              </div>
+            );
+          })}
+        </MenuList>
+      </Drawer>
     );
   }
 }
 
 ModelList.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
+  handleModelChoice: PropTypes.func.isRequired,
+  currentModelIndex: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(ModelList);

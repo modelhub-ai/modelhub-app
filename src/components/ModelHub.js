@@ -1,30 +1,46 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import glamorous from "glamorous";
-import ModelList from "./ModelList";
-import Content from "./Content";
-import Welcome from "./Welcome";
-import data from "../data";
+import React, {Component} from 'react';
+import glamorous from 'glamorous';
+import ModelList from './ModelList';
+import Content from './Content';
+import Welcome from './Welcome';
+import data from '../data';
 
+/**
+ * ModelHub class
+ * Receives the data.
+ * @extends Component
+ */
 class ModelHub extends Component {
-  constructor(props) {
-    super(props);
+  /**
+   * ModelHub constructor
+   */
+  constructor() {
+    super();
     this.state = {
-      currentModelIndex: -1
+      currentModelIndex: 0, // -1
     };
     this.handleModelChoice = this.handleModelChoice.bind(this);
   }
+  /**
+   * Handles choosing a different model.
+   * Sets the state of this component
+   * @param  {MouseEvent} event Mouse event
+   */
   handleModelChoice(event) {
-    this.setState({ currentModelIndex: event.currentTarget.value });
+    this.setState({currentModelIndex: event.currentTarget.value});
   }
+  /**
+   * Renders ModelHub
+   * @return {ReactElement}
+   */
   render() {
-    const { currentModelIndex } = this.state;
+    const {currentModelIndex} = this.state;
     const GDiv = glamorous.div({
       flexGrow: 1,
       zIndex: 1,
-      overflow: "hidden",
-      position: "relative",
-      display: "flex"
+      overflow: 'hidden',
+      position: 'relative',
+      display: 'flex',
     });
     return (
       <GDiv>
@@ -42,7 +58,5 @@ class ModelHub extends Component {
     );
   }
 }
-
-ModelHub.propTypes = {};
 
 export default ModelHub;
