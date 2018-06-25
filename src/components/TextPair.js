@@ -19,7 +19,7 @@ class TextPair extends Component {
     });
     return (
       <GDiv>
-        <Typography variant="title">{title}</Typography>
+        <Typography variant="button">{title}</Typography>
         <Typography variant="body1">{body}</Typography>
       </GDiv>
     );
