@@ -13,25 +13,45 @@ class TextPair extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {title, body} = this.props;
+    const {title, body, code, spacer} = this.props;
     const GDiv = glamorous.div({
-      marginBottom: 25,
+      marginBottom: spacer,
+    });
+    const Code = glamorous.div({
+      backgroundColor: '#F1F1F1',
+      fontSize: '0.875rem',
+      paddingLeft: 25,
+      fontFamily: '\'Courier\', sans-serif',
     });
     return (
       <GDiv>
         <Typography variant="button">{title}</Typography>
-        <Typography variant="body1">{body}</Typography>
+        {code ? (
+          <Code>{body}</Code>
+        ) : (
+          <Typography variant="body1">{body}</Typography>
+        )}
       </GDiv>
     );
   }
 }
 
 TextPair.propTypes = {
-  title: PropTypes.string.isRequired,
-  body: PropTypes.oneOfType([
+  title: PropTypes.oneOfType([
     PropTypes.string.isRequired,
-    PropTypes.number.isRequired,
+    PropTypes.node.isRequired,
   ]),
+  body: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.node,
+  ]),
+  code: PropTypes.bool.isRequired,
+  spacer: PropTypes.number.isRequired,
 };
 
+TextPair.defaultProps = {
+  code: false,
+  spacer: 25,
+};
 export default TextPair;
