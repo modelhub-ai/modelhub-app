@@ -37,6 +37,7 @@ class ContentTabs extends Component {
    */
   handleChange(event, value) {
     this.setState({value});
+    console.log('current tab: ', this.props.tabs[value].name.toLowerCase());
   }
 
   /**
