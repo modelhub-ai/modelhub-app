@@ -16,6 +16,7 @@ class AppButton extends Component {
     const {text, href} = this.props;
     const GButton = glamorous(Button)({
       marginRight: '15px !important',
+      height: '25px !important',
     });
     return (
       <GButton
@@ -31,7 +32,10 @@ class AppButton extends Component {
 }
 
 AppButton.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.node.isRequired,
+  ]),
   href: PropTypes.string.isRequired,
 };
 

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TextPair from '../TextPair';
 import AppButton from '../AppButton';
+import MailIcon from '@material-ui/icons/Mail';
+import glamorous from 'glamorous';
 
 /**
  * Publication Class
@@ -14,6 +16,9 @@ class Publication extends Component {
    */
   render() {
     const {publication} = this.props.config;
+    const GMailIcon = glamorous(MailIcon)({
+      width: '20px !important',
+    });
     return (
       <div>
         <TextPair title={'Title'} body={publication.title} />
@@ -23,6 +28,7 @@ class Publication extends Component {
         <TextPair title={'Bibtex'} body={publication.bibtex} />
         <AppButton text={publication.source} href={publication.url} />
         <AppButton text={'citations'} href={publication.google_scholar} />
+        <AppButton text={<GMailIcon />} href={'mailto:' + publication.email} />
       </div>
     );
   }
