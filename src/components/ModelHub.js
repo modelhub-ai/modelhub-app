@@ -27,7 +27,9 @@ class ModelHub extends Component {
    * @param  {MouseEvent} event Mouse event
    */
   handleModelChoice(event) {
-    this.setState({currentModelIndex: event.currentTarget.value});
+    const value = event.currentTarget.value;
+    this.setState({currentModelIndex: value});
+    console.log('current model: ', data[value].name.toLowerCase());
   }
   /**
    * Renders ModelHub
