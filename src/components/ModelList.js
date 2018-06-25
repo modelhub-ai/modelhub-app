@@ -35,14 +35,15 @@ class ModelList extends Component {
       >
         <MenuList>
           <div className={classes.toolbar} />
-          {data.map((model, index) => {
+          {data.map((dataItem, index) => {
+            const {name, task_extended, url, api} = dataItem;
             return (
               <div key={'model_' + index}>
                 <ModelItem
                   value={index}
-                  primary={model.name}
-                  secondary={model.task_extended}
-                  thumbnail={model.url + 'thumbnail/thumbnail.jpg'}
+                  primary={name}
+                  secondary={task_extended}
+                  thumbnail={url + api + 'thumbnail/thumbnail.jpg'}
                   handleModelChoice={handleModelChoice}
                   currentModelIndex={currentModelIndex}
                 />

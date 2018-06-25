@@ -52,7 +52,7 @@ class ContentTabs extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {classes, theme, config, tabs} = this.props;
+    const {classes, theme, data, config, tabs} = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
@@ -79,6 +79,7 @@ class ContentTabs extends Component {
               <TabContainer
                 key={index}
                 dir={theme.direction}
+                data={data}
                 config={config}
                 tab={tab}
               />
@@ -93,6 +94,7 @@ class ContentTabs extends Component {
 ContentTabs.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
   config: PropTypes.object.isRequired,
   tabs: PropTypes.array.isRequired,
 };

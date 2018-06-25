@@ -11,11 +11,11 @@ class TabContainer extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {dir, config, tab} = this.props;
+    const {dir, data, config, tab} = this.props;
     const Component = tab.component;
     return (
       <div dir={dir} style={{padding: 8 * 3}}>
-        <Component config={config} />
+        <Component data={data} config={config} />
       </div>
     );
   }
@@ -23,6 +23,7 @@ class TabContainer extends Component {
 
 TabContainer.propTypes = {
   dir: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
   config: PropTypes.object.isRequired,
   tab: PropTypes.object.isRequired,
 };
