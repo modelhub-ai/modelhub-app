@@ -38,8 +38,7 @@ class Model extends Component {
         </div>
       );
     } else if (config.viewer !== 'netron') {
-      // others go here.
-      modelContent = 'This viewer is not supported.';
+      modelContent = 'Viewer type is not supported by this frontend.';
     }
     return <div>{modelContent}</div>;
   }
