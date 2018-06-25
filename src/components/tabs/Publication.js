@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import TextPair from '../TextPair';
+import AppButton from '../AppButton';
 // import glamorous from 'glamorous';
 
 /**
@@ -12,8 +14,18 @@ class Publication extends Component {
    * @return {ReactElement}
    */
   render() {
-    // const {config} = this.props;
-    return <div>Publication</div>;
+    const {publication} = this.props.config;
+    return (
+      <div>
+        <TextPair title={'Title'} body={publication.title} />
+        <TextPair title={'Authors'} body={publication.authors} />
+        <TextPair title={'Abstract'} body={publication.abstract} />
+        <TextPair title={'Year'} body={publication.year} />
+        <TextPair title={'Bibtex'} body={publication.bibtex} />
+        <AppButton text={publication.journal} href={publication.url} />
+        <AppButton text={'citations'} href={publication.google_scholar} />
+      </div>
+    );
   }
 }
 

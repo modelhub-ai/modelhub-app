@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 
 /**
  * TabContainer Class
@@ -15,9 +14,9 @@ class TabContainer extends Component {
     const {dir, config, tab} = this.props;
     const Component = tab.component;
     return (
-      <Typography component="div" dir={dir} style={{padding: 8 * 3}}>
+      <div dir={dir} style={{padding: 8 * 3}}>
         <Component config={config} />
-      </Typography>
+      </div>
     );
   }
 }
