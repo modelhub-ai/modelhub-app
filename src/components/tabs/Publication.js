@@ -28,7 +28,12 @@ class Publication extends Component {
         <TextPair title={'Bibtex'} body={publication.bibtex} />
         <AppButton text={publication.source} href={publication.url} />
         <AppButton text={'citations'} href={publication.google_scholar} />
-        <AppButton text={<GMailIcon />} href={'mailto:' + publication.email} />
+        {publication.email !== undefined ? (
+          <AppButton
+            text={<GMailIcon />}
+            href={'mailto:' + publication.email}
+          />
+        ) : null}
       </div>
     );
   }
