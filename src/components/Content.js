@@ -102,8 +102,9 @@ class Content extends Component {
    * When component mounts, get legal json
    */
   componentDidMount() {
-    this.fetchData(this.props.data.url + 'get_config', 'config');
-    this.fetchData(this.props.data.url + 'get_legal', 'legal');
+    const {url, api} = this.props.data;
+    this.fetchData(url + api + 'get_config', 'config');
+    this.fetchData(url + api + 'get_legal', 'legal');
   }
 
   /**
@@ -111,12 +112,12 @@ class Content extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {classes} = this.props;
+    const {classes, data} = this.props;
     const {config, legal, tabs} = this.state;
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ContentTabs config={config} tabs={tabs} />
+        <ContentTabs data={data} config={config} tabs={tabs} />
         <Footer legal={legal} />
       </main>
     );

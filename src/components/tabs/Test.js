@@ -18,6 +18,7 @@ class Test extends Component {
 }
 
 Test.propTypes = {
+  data: PropTypes.object.isRequired,
   config: PropTypes.object.isRequired,
 };
 
