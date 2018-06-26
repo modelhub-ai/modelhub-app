@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Overview from './tabs/Overview';
 import Publication from './tabs/Publication';
 import Model from './tabs/Model';
+import Demo from './tabs/Demo';
 import Test from './tabs/Test';
 import Installation from './tabs/Installation';
 
@@ -35,67 +36,48 @@ class Content extends Component {
       legal: {},
       tabs: [],
     };
-    this.fetchData = this.fetchData.bind(this);
   }
 
   /**
    * Creates the list of tabs given the config
    * @param  {object} config config from REST API call
+   * @param  {array} samples sample file array from REST API call
    * @return {array} array of tabs
    */
-  createTabList(config) {
+  createTabList(config, samples) {
     let tabs = [
       {
         name: 'Overview',
         component: Overview,
-        visible: true,
+        use: true,
       },
       {
         name: 'Publication',
         component: Publication,
-        visible: config.publication !== undefined ? true : false,
+        use: config.publication !== undefined ? true : false,
       },
       {
         name: 'Model',
         component: Model,
-        visible: config.viewer !== undefined ? true : false,
+        use: config.viewer !== undefined ? true : false,
+      },
+      {
+        name: 'Demo',
+        component: Demo,
+        use: samples.length !== 0 ? true : false,
       },
       {
         name: 'Test',
         component: Test,
-        visible: true,
+        use: true,
       },
       {
         name: 'Installation',
         component: Installation,
-        visible: true,
+        use: true,
       },
     ];
     return tabs;
-  }
-
-  /**
-   * Fetches the legal json
-   * @param  {string} url url to fetch
-   * @param  {string} key State property to set
-   */
-  fetchData(url, key) {
-    let that = this;
-    fetch(url)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(result) {
-        if (key === 'config') {
-          const tabs = that.createTabList(result);
-          const tabsFiletred = tabs.filter((tab) => {
-            return tab.visible === true;
-          });
-          that.setState({[key]: result, tabs: tabsFiletred});
-        } else {
-          that.setState({[key]: result});
-        }
-      });
   }
 
   /**
@@ -103,8 +85,27 @@ class Content extends Component {
    */
   componentDidMount() {
     const {url, api} = this.props.data;
-    this.fetchData(url + api + 'get_config', 'config');
-    this.fetchData(url + api + 'get_legal', 'legal');
+    const urls = [
+      url + api + 'get_config',
+      url + api + 'get_samples',
+      url + api + 'get_legal',
+    ];
+    Promise.all(
+      urls.map((url) => fetch(url).then((response) => response.json()))
+    ).then((result) => {
+      // create tabs array
+      const tabs = this.createTabList(result[0], result[1]);
+      // filter out the ones not used
+      const tabsFiletred = tabs.filter((tab) => {
+        return tab.use === true;
+      });
+      // set state
+      this.setState({
+        config: result[0],
+        legal: result[2],
+        tabs: tabsFiletred,
+      });
+    });
   }
 
   /**
