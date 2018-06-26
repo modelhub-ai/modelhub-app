@@ -7,7 +7,7 @@ import models from '../models';
 
 /**
  * ModelHub class
- * Receives the data.
+ * Receives the models.
  * @extends Component
  */
 class ModelHub extends Component {
@@ -24,6 +24,7 @@ class ModelHub extends Component {
     };
     this.handleModelChoice = this.handleModelChoice.bind(this);
   }
+
   /**
    * Handles choosing a different model.
    * Sets the state of this component
