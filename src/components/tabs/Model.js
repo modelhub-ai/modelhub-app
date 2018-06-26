@@ -26,7 +26,7 @@ class Model extends Component {
             title={'netron viewer'}
             height={'700'}
             width={'100%'}
-            src={model.url + model.viewer}
+            src={model.viewer}
             frameBorder={'0'}
           />
           <GDiv>

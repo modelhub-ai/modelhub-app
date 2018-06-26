@@ -84,14 +84,11 @@ class Content extends Component {
    * When component mounts, get legal json
    */
   componentDidMount() {
-    const {url, api} = this.props.model;
-    const urls = [
-      url + api + 'get_config',
-      url + api + 'get_samples',
-      url + api + 'get_legal',
-    ];
+    const {config, samples, legal} = this.props.model;
     Promise.all(
-      urls.map((url) => fetch(url).then((response) => response.json()))
+      [config, samples, legal].map((url) =>
+        fetch(url).then((response) => response.json())
+      )
     ).then((result) => {
       // create tabs array
       const tabs = this.createTabList(result[0], result[1]);

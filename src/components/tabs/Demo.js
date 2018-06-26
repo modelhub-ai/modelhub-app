@@ -17,7 +17,7 @@ class Demo extends Component {
    */
   render() {
     const {model} = this.props;
-    return <div>{model.url}</div>;
+    return <div>{model.samples}</div>;
   }
 }
 
