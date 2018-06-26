@@ -1,6 +1,6 @@
 {
   "name": "modelhub-app",
-  "homepage": "https://modelhub-ai.github.io/modelhub-app",
+  "homepage": "http://app.modelhub.ai/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
