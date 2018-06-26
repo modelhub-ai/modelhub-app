@@ -10,18 +10,19 @@ import PropTypes from 'prop-types';
  * @extends Component
  */
 class Demo extends Component {
+  // componentDidMount() {}
   /**
    * Renders Demo
    * @return {ReactElement}
    */
   render() {
-    const {data} = this.props;
-    return <div>{data.url}</div>;
+    const {model} = this.props;
+    return <div>{model.url}</div>;
   }
 }
 
 Demo.propTypes = {
-  data: PropTypes.object.isRequired,
+  model: PropTypes.object.isRequired,
   config: PropTypes.object,
 };
 

@@ -40,7 +40,7 @@ class Publication extends Component {
 }
 
 Publication.propTypes = {
-  data: PropTypes.object,
+  model: PropTypes.object,
   config: PropTypes.object.isRequired,
 };
 

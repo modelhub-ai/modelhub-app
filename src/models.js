@@ -5,7 +5,7 @@
  * information for now.
  * @type {Array}
  */
-const data = [
+const models = [
   {
     id: 'd50796da-87f2-4493-846e-6eeb498acc63',
     url: 'http://localhost',
@@ -31,4 +31,4 @@ const data = [
     task_extended: 'Liver and liver lesion segmentation',
   },
 ];
-export default data;
+export default models;

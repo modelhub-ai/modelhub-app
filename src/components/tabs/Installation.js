@@ -89,7 +89,7 @@ class Installation extends Component {
 }
 
 Installation.propTypes = {
-  data: PropTypes.object,
+  model: PropTypes.object,
   config: PropTypes.object.isRequired,
 };
 

@@ -24,7 +24,12 @@ class ModelList extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {classes, data, handleModelChoice, currentModelIndex} = this.props;
+    const {
+      classes,
+      models,
+      handleModelChoice,
+      currentModelIndex,
+    } = this.props;
     return (
       <Drawer
         variant="permanent"
@@ -35,7 +40,7 @@ class ModelList extends Component {
       >
         <MenuList>
           <div className={classes.toolbar} />
-          {data.map((dataItem, index) => {
+          {models.map((dataItem, index) => {
             const {name, task_extended, url, api} = dataItem;
             return (
               <div key={'model_' + index}>
@@ -59,7 +64,7 @@ class ModelList extends Component {
 
 ModelList.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.array.isRequired,
+  models: PropTypes.array.isRequired,
   handleModelChoice: PropTypes.func.isRequired,
   currentModelIndex: PropTypes.number.isRequired,
 };

@@ -37,7 +37,7 @@ class Overview extends Component {
 }
 
 Overview.propTypes = {
-  data: PropTypes.object,
+  model: PropTypes.object,
   config: PropTypes.object.isRequired,
 };
 

@@ -12,7 +12,7 @@ class Model extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {config, data} = this.props;
+    const {config, model} = this.props;
     const GDiv = glamorous.div({
       bottom: 45,
       left: 16,
@@ -26,7 +26,7 @@ class Model extends Component {
             title={'netron viewer'}
             height={'700'}
             width={'100%'}
-            src={data.url + data.viewer}
+            src={model.url + model.viewer}
             frameBorder={'0'}
           />
           <GDiv>
@@ -45,7 +45,7 @@ class Model extends Component {
 }
 
 Model.propTypes = {
-  data: PropTypes.object.isRequired,
+  model: PropTypes.object.isRequired,
   config: PropTypes.object.isRequired,
 };
 

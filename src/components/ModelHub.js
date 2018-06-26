@@ -3,7 +3,7 @@ import glamorous from 'glamorous';
 import ModelList from './ModelList';
 import Content from './Content';
 import Welcome from './Welcome';
-import data from '../data';
+import models from '../models';
 
 /**
  * ModelHub class
@@ -29,7 +29,7 @@ class ModelHub extends Component {
   handleModelChoice(event) {
     const value = event.currentTarget.value;
     this.setState({currentModelIndex: value});
-    console.log('current model: ', data[value].name.toLowerCase());
+    console.log('current model: ', models[value].name.toLowerCase());
   }
   /**
    * Renders ModelHub
@@ -47,14 +47,14 @@ class ModelHub extends Component {
     return (
       <GDiv>
         <ModelList
-          data={data}
+          models={models}
           handleModelChoice={this.handleModelChoice}
           currentModelIndex={currentModelIndex}
         />
         {currentModelIndex === -1 ? (
           <Welcome />
         ) : (
-          <Content data={data[currentModelIndex]} />
+          <Content model={models[currentModelIndex]} />
         )}
       </GDiv>
     );

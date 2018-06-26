@@ -84,7 +84,7 @@ class Content extends Component {
    * When component mounts, get legal json
    */
   componentDidMount() {
-    const {url, api} = this.props.data;
+    const {url, api} = this.props.model;
     const urls = [
       url + api + 'get_config',
       url + api + 'get_samples',
@@ -113,12 +113,12 @@ class Content extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {classes, data} = this.props;
+    const {classes, model} = this.props;
     const {config, legal, tabs} = this.state;
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ContentTabs data={data} config={config} tabs={tabs} />
+        <ContentTabs model={model} config={config} tabs={tabs} />
         <Footer legal={legal} />
       </main>
     );
@@ -127,7 +127,7 @@ class Content extends Component {
 
 Content.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
+  model: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Content);
