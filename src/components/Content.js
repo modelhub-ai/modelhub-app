@@ -118,7 +118,6 @@ class Content extends Component {
   render() {
     const {classes, model} = this.props;
     const {fetches, tabs} = this.state;
-    console.log(fetches);
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />

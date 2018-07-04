@@ -12,11 +12,11 @@ class Test extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {model} = this.props;
+    const {model, fetches} = this.props;
     return (
       <div>
         {model.predict_upload}
-        {model.model_io}
+        {fetches.config.model.io.input.format}
       </div>
     );
   }
@@ -24,7 +24,7 @@ class Test extends Component {
 
 Test.propTypes = {
   model: PropTypes.object.isRequired,
-  fetches: PropTypes.object,
+  fetches: PropTypes.object.isRequired,
 };
 
 export default Test;
