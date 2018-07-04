@@ -27,7 +27,7 @@ class Footer extends Component {
         backgroundColor: '#fafafa !important',
       },
     });
-    const {legal} = this.props;
+    const {legal} = this.props.fetches;
     return (
       <GDiv>
         <GButton target={'_blank'} href={'http://modelhub.ai/'}>
@@ -49,7 +49,7 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-  legal: PropTypes.object.isRequired,
+  fetches: PropTypes.object.isRequired,
 };
 
 export default Footer;

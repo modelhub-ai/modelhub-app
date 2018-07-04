@@ -12,14 +12,19 @@ class Test extends Component {
    * @return {ReactElement}
    */
   render() {
-    // const {config} = this.props;
-    return <div>Test</div>;
+    const {model} = this.props;
+    return (
+      <div>
+        {model.predict_upload}
+        {model.model_io}
+      </div>
+    );
   }
 }
 
 Test.propTypes = {
   model: PropTypes.object.isRequired,
-  config: PropTypes.object.isRequired,
+  fetches: PropTypes.object,
 };
 
 export default Test;

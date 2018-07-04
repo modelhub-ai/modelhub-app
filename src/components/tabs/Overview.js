@@ -15,7 +15,7 @@ class Overview extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {meta, model} = this.props.config;
+    const {meta, model} = this.props.fetches.config;
     const GTypography = glamorous(Typography)({
       marginBottom: '25px !important',
     });
@@ -38,7 +38,7 @@ class Overview extends Component {
 
 Overview.propTypes = {
   model: PropTypes.object,
-  config: PropTypes.object.isRequired,
+  fetches: PropTypes.object.isRequired,
 };
 
 export default Overview;

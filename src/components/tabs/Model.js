@@ -12,14 +12,14 @@ class Model extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {config, model} = this.props;
+    const {fetches, model} = this.props;
     const GDiv = glamorous.div({
       bottom: 45,
       left: 16,
       fontSize: 11,
     });
     let modelContent;
-    if (config.viewer === 'netron') {
+    if (fetches.config.viewer === 'netron') {
       modelContent = (
         <div>
           <iframe
@@ -37,7 +37,7 @@ class Model extends Component {
           </GDiv>
         </div>
       );
-    } else if (config.viewer !== 'netron') {
+    } else if (fetches.config.viewer !== 'netron') {
       modelContent = 'Viewer type is not supported by this frontend.';
     }
     return <div>{modelContent}</div>;
@@ -46,7 +46,7 @@ class Model extends Component {
 
 Model.propTypes = {
   model: PropTypes.object.isRequired,
-  config: PropTypes.object.isRequired,
+  fetches: PropTypes.object.isRequired,
 };
 
 export default Model;

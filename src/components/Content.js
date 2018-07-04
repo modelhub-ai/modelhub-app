@@ -32,8 +32,11 @@ class Content extends Component {
   constructor() {
     super();
     this.state = {
-      config: {},
-      legal: {},
+      fetches: {
+        config: {},
+        samples: {},
+        legal: {},
+      },
       tabs: [],
     };
   }
@@ -98,8 +101,11 @@ class Content extends Component {
       });
       // set state
       this.setState({
-        config: result[0],
-        legal: result[2],
+        fetches: {
+          config: result[0],
+          samples: result[1],
+          legal: result[2],
+        },
         tabs: tabsFiletred,
       });
     });
@@ -111,12 +117,13 @@ class Content extends Component {
    */
   render() {
     const {classes, model} = this.props;
-    const {config, legal, tabs} = this.state;
+    const {fetches, tabs} = this.state;
+    console.log(fetches);
     return (
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ContentTabs model={model} config={config} tabs={tabs} />
-        <Footer legal={legal} />
+        <ContentTabs model={model} fetches={fetches} tabs={tabs} />
+        <Footer fetches={fetches} />
       </main>
     );
   }

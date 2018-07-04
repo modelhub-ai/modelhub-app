@@ -49,7 +49,8 @@ class ModelHub extends Component {
     model.model_io = urlApi + 'get_model_io';
     model.model_files = urlApi + 'get_model_files';
     model.samples = urlApi + 'get_samples';
-    model.predict = urlApi + 'predict';
+    model.predict_upload = urlApi + 'predict';
+    model.predict_url = urlApi + 'predict?fileurl=';
     // extras
     model.thumbnail = urlApi + 'thumbnail/thumbnail.jpg';
     model.viewer = url + viewer;

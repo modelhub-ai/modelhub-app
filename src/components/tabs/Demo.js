@@ -16,14 +16,19 @@ class Demo extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {model} = this.props;
-    return <div>{model.samples}</div>;
+    const {model, fetches} = this.props;
+    return (
+      <div>
+        {fetches.samples}
+        {model.predict_url}
+      </div>
+    );
   }
 }
 
 Demo.propTypes = {
   model: PropTypes.object.isRequired,
-  config: PropTypes.object,
+  fetches: PropTypes.object.isRequired,
 };
 
 export default Demo;

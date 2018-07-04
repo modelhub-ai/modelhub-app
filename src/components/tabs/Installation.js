@@ -14,7 +14,7 @@ class Installation extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {script} = this.props.config;
+    const {script} = this.props.fetches.config;
     const GTypography = glamorous(Typography)({
       marginBottom: '25px !important',
     });
@@ -90,7 +90,7 @@ class Installation extends Component {
 
 Installation.propTypes = {
   model: PropTypes.object,
-  config: PropTypes.object.isRequired,
+  fetches: PropTypes.object.isRequired,
 };
 
 export default Installation;

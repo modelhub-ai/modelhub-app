@@ -15,7 +15,7 @@ class Publication extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {publication} = this.props.config;
+    const {publication} = this.props.fetches.config;
     const GMailIcon = glamorous(MailIcon)({
       width: '20px !important',
     });
@@ -41,7 +41,7 @@ class Publication extends Component {
 
 Publication.propTypes = {
   model: PropTypes.object,
-  config: PropTypes.object.isRequired,
+  fetches: PropTypes.object.isRequired,
 };
 
 export default Publication;
