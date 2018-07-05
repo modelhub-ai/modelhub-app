@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import TextPair from '../TextPair';
+import TextPair from '../utils/TextPair';
 import glamorous from 'glamorous';
 
 /**

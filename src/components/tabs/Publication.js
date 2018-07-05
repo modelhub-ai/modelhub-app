@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import TextPair from '../TextPair';
-import AppButton from '../AppButton';
+import TextPair from '../utils/TextPair';
+import AppButton from '../utils/AppButton';
 import MailIcon from '@material-ui/icons/Mail';
 import glamorous from 'glamorous';
 
