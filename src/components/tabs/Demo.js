@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../Layout';
+import Input from '../Input';
+import Output from '../Output';
 // import TextPair from '../TextPair';
 // import AppButton from '../AppButton';
 // import Typography from '@material-ui/core/Typography';
@@ -19,8 +21,8 @@ class Demo extends Component {
   constructor() {
     super();
     this.state = {
-      input: '',
-      output: [],
+      inputType: '',
+      outputType: [{name: '', type: ''}],
     };
   }
 
@@ -32,8 +34,8 @@ class Demo extends Component {
     let that = this;
     fetch(samples[0]).then(function(response) {
       that.setState({
-        input: response.headers.get('Content-Type'),
-        output: config.model.io.output,
+        inputType: response.headers.get('Content-Type'),
+        outputType: config.model.io.output,
       });
     });
   }
@@ -43,13 +45,14 @@ class Demo extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {model, fetches} = this.props;
+    // const {model, fetches} = this.props;
+    const {inputType, outputType} = this.state;
     return (
       <div>
-        <Layout />
-        {fetches.samples}
-        {fetches.config.model.io.input.format}
-        {model.predict_url}
+        <Layout
+          input={<Input type={inputType} />}
+          output={<Output type={outputType} />}
+        />
       </div>
     );
   }
@@ -61,3 +64,6 @@ Demo.propTypes = {
 };
 
 export default Demo;
+
+// {fetches.samples}
+// {model.predict_url}
