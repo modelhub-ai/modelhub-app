@@ -45,12 +45,12 @@ class Demo extends Component {
    * @return {ReactElement}
    */
   render() {
-    // const {model, fetches} = this.props;
+    const {fetches} = this.props;
     const {inputType, outputType} = this.state;
     return (
       <div>
         <Layout
-          input={<Input type={inputType} />}
+          input={<Input type={inputType} data={fetches.samples} />}
           output={<Output type={outputType} />}
         />
       </div>
@@ -65,5 +65,4 @@ Demo.propTypes = {
 
 export default Demo;
 
-// {fetches.samples}
 // {model.predict_url}
