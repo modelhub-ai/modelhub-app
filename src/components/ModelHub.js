@@ -51,6 +51,7 @@ class ModelHub extends Component {
     model.samples = urlApi + 'get_samples';
     model.predict_upload = urlApi + 'predict';
     model.predict_url = urlApi + 'predict?fileurl=';
+    model.predict_sample = urlApi + 'predict_sample?filename='; // temp
     // extras
     model.thumbnail = urlApi + 'thumbnail/thumbnail.jpg';
     model.viewer = url + viewer;

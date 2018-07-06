@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
+import ImageFocus from '../utils/ImageFocus';
 
 /**
  * Images
@@ -8,15 +9,11 @@ import glamorous from 'glamorous';
  */
 class Images extends Component {
   /**
-  onClick() {
-    console.log('clicked');
-  }
-  /**
    * Renders Images
    * @return {ReactElement}
    */
   render() {
-    const {data} = this.props;
+    const {data, onCLickHandler, currentInput} = this.props;
     const GGallery = glamorous.div({
       backgroundColor: '#eeeeee',
       padding: 10,
@@ -28,20 +25,30 @@ class Images extends Component {
       height: '100%',
     });
     const GImg = glamorous.img({
-      marginRight: 10,
-      flex: 1,
+      // marginRight: '5px !important',
+      // flex: 1,
       height: '100%',
       cursor: 'pointer',
       border: '3px solid transparent',
     });
     return (
-      <GGallery>
-        {data.map((tile) => (
-          <GContent key={tile}>
-            <GImg src={tile} alt={''} onClick={this.onClick} />
-          </GContent>
-        ))}
-      </GGallery>
+      <div>
+        <ImageFocus src={currentInput} />
+        <GGallery>
+          {data.map((tile) => (
+            <GContent key={tile}>
+              <GImg
+                src={tile}
+                alt={''}
+                onClick={onCLickHandler}
+                style={{
+                  borderColor: tile === currentInput ? '#ffab40' : 'transparent',
+                }}
+              />
+            </GContent>
+          ))}
+        </GGallery>
+      </div>
     );
   }
 }
@@ -51,6 +58,8 @@ Images.propTypes = {
     PropTypes.array.isRequired,
     PropTypes.string.isRequired,
   ]),
+  onCLickHandler: PropTypes.func.isRequired,
+  currentInput: PropTypes.string.isRequired,
 };
 
 export default Images;

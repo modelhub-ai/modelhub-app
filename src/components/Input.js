@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 // import glamorous from 'glamorous';
 //
 import Images from './inputs/Images';
+import Dicom from './inputs/Dicom';
+import NoSupport from './NoSupport';
 
 /**
  * Input
@@ -16,18 +18,30 @@ class Input extends Component {
    */
   getComponent(type) {
     let component;
-    const {data} = this.props;
+    const {data, onCLickHandler, currentInput} = this.props;
     switch (type) {
       case 'image/jpg':
       case 'image/jpeg':
       case 'image/png':
-        component = <Images data={data} />;
+        component = (
+          <Images
+            data={data}
+            onCLickHandler={onCLickHandler}
+            currentInput={currentInput}
+          />
+        );
         break;
       case 'application/dicom':
-        component = 'Today is Sunday';
+        component = (
+          <Dicom
+            data={data}
+            onCLickHandler={onCLickHandler}
+            current={currentInput}
+          />
+        );
         break;
       default:
-        component = 'Looking forward to the Weekend';
+        component = <NoSupport message={'sample file type'} />;
     }
     return component;
   }
@@ -47,6 +61,8 @@ Input.propTypes = {
     PropTypes.array.isRequired,
     PropTypes.string.isRequired,
   ]),
+  onCLickHandler: PropTypes.func.isRequired,
+  currentInput: PropTypes.string.isRequired,
 };
 
 export default Input;
