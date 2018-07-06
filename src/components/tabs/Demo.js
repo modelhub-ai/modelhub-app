@@ -50,6 +50,8 @@ class Demo extends Component {
   }
   /**
    * Figures out the input and output types
+   * The type here is from the first sample and not the input type in the
+   * config file.
    */
   componentDidMount() {
     const {samples, config} = this.props.fetches;
