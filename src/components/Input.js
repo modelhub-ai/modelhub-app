@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-//
+// The main input components
 import Images from './inputs/Images';
 import Dicom from './inputs/Dicom';
 import NoSupport from './utils/NoSupport';
@@ -35,7 +35,7 @@ class Input extends Component {
           <Dicom
             data={data}
             onCLickHandler={onCLickHandler}
-            current={currentInput}
+            currentInput={currentInput}
           />
         );
         break;

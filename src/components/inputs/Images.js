@@ -28,10 +28,7 @@ class Images extends Component {
 }
 
 Images.propTypes = {
-  data: PropTypes.oneOfType([
-    PropTypes.array.isRequired,
-    PropTypes.string.isRequired,
-  ]),
+  data: PropTypes.array.isRequired,
   onCLickHandler: PropTypes.func.isRequired,
   currentInput: PropTypes.string.isRequired,
 };

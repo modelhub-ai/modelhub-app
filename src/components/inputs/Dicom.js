@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import glamorous from 'glamorous';
 
 /**
@@ -17,6 +17,10 @@ class Dicom extends Component {
   }
 }
 
-Dicom.propTypes = {};
+Dicom.propTypes = {
+  data: PropTypes.array.isRequired,
+  onCLickHandler: PropTypes.func.isRequired,
+  currentInput: PropTypes.string.isRequired,
+};
 
 export default Dicom;

@@ -28,6 +28,7 @@ class Demo extends Component {
   }
   /**
    * Predicts on a given src of a sample
+   * Response should always be a json
    * @param  {string} src full url of a sample file
    */
   predict(src) {
@@ -37,17 +38,19 @@ class Demo extends Component {
       .then(function(response) {
         return response.json();
       })
-      .then(function(output) {
-        console.log(output);
+      .then(function(result) {
+        console.log(result);
         that.setState({
-          currentOutput: output,
+          currentOutput: result, // currently one object, should be list of
+          // objects
         });
       });
   }
   /**
    * Figures out the input and output types
-   * The type here is from the first sample and not the input type in the
+   * The input type here is from the first sample and not the input type in the
    * config file.
+   * The output type is based in a list of objects.
    */
   componentDidMount() {
     const {samples, config} = this.props.fetches;
@@ -61,7 +64,6 @@ class Demo extends Component {
       that.predict(samples[0]);
     });
   }
-
   /**
    * When a sample image is clicked
    * @param  {MouseEvent} event Mouse event
@@ -72,7 +74,6 @@ class Demo extends Component {
       currentInput: event.currentTarget.src,
     });
   }
-
   /**
    * Renders Demo
    * @return {ReactElement}
