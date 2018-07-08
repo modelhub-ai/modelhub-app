@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import Layout from '../Layout';
 import Input from '../Input';
 import Output from '../Output';
-// import TextPair from '../TextPair';
-// import AppButton from '../AppButton';
-// import Typography from '@material-ui/core/Typography';
-// import glamorous from 'glamorous';
 
 /**
  * Demo Class

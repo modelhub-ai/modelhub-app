@@ -22,7 +22,7 @@ class ImageGallery extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {data, onCLickHandler, currentInput} = this.props;
+    const {data, onCLickHandler} = this.props; // currentInput
     const GGallery = glamorous.div({
       backgroundColor: '#eeeeee',
       padding: 10,

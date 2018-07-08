@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import TextPair from '../utils/TextPair';
 import glamorous from 'glamorous';
+import NoSupport from '../utils/NoSupport';
 
 /**
  * Installation Class
@@ -78,9 +79,7 @@ class Installation extends Component {
         );
       } else if (scriptInstance.type !== 'bash') {
         installationContent.push(
-          <GTypography key={index} variant="headline">
-            Installation type is not supported by this frontend.
-          </GTypography>
+          <NoSupport key={index} message={'installation type'} />
         );
       }
     });

@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-// import glamorous from 'glamorous';
 //
 import Images from './inputs/Images';
 import Dicom from './inputs/Dicom';
-import NoSupport from './NoSupport';
+import NoSupport from './utils/NoSupport';
 
 /**
  * Input
