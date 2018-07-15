@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
+import Paper from '@material-ui/core/Paper';
+import {withStyles} from '@material-ui/core/styles';
+
+const styles = (theme) => ({
+  root: {
+    ...theme.mixins.gutters(),
+    padding: '0px !important',
+  },
+});
 
 /**
  * ImageGallery
@@ -22,7 +31,7 @@ class ImageGallery extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {data, onCLickHandler} = this.props; // currentInput
+    const {classes, data, onCLickHandler} = this.props; // currentInput
     const GGallery = glamorous.div({
       backgroundColor: '#eeeeee',
       padding: 10,
@@ -37,18 +46,19 @@ class ImageGallery extends Component {
       // border: '3px solid transparent',
     });
     return (
-      <div>
+      <Paper className={classes.root} elevation={1}>
         <GGallery>
           {data.map((tile) => (
             <GImg key={tile} src={tile} alt={''} onClick={onCLickHandler} />
           ))}
         </GGallery>
-      </div>
+      </Paper>
     );
   }
 }
 
 ImageGallery.propTypes = {
+  classes: PropTypes.object.isRequired,
   data: PropTypes.oneOfType([
     PropTypes.array.isRequired,
     PropTypes.string.isRequired,
@@ -57,7 +67,7 @@ ImageGallery.propTypes = {
   currentInput: PropTypes.string.isRequired,
 };
 
-export default ImageGallery;
+export default withStyles(styles)(ImageGallery);
 
 // style={{
 //   borderColor: tile === currentInput ? '#ffab40' : 'transparent',

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
 /**
@@ -15,13 +15,14 @@ class OutputDisplay extends Component {
     const {children} = this.props;
     const GDiv = glamorous.div({
       height: 500,
-      backgroundColor: '#eeeeee',
-      border: '1px solid #000',
+      // backgroundColor: '#eeeeee',
     });
     return <GDiv>{children}</GDiv>;
   }
 }
 
-OutputDisplay.propTypes = {};
+OutputDisplay.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default OutputDisplay;

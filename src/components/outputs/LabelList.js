@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 // import glamorous from 'glamorous';
+import BarPlot from '../BarPlot';
 
 /**
  * LabelList
@@ -12,8 +13,8 @@ class LabelList extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {currentOutput} = this.props;
-    return <div>{'LabelList'}</div>;
+    // const {currentOutput} = this.props;
+    return <BarPlot />;
   }
 }
 
