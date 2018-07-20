@@ -3,6 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import glamorous from 'glamorous';
+import theme from '../theme.js';
 
 /**
  * Header
@@ -16,6 +17,7 @@ class Header extends Component {
   render() {
     const GAppBar = glamorous(AppBar)({
       zIndex: '1500 !important',
+      backgroundColor: theme.darkTeal + ' !important',
     });
     return (
       <GAppBar position="absolute">

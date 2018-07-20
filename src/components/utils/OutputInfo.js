@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 const styles = (theme) => ({
   root: {
     ...theme.mixins.gutters(),
-    height: 100,
+    height: 90,
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
   },
@@ -30,7 +30,7 @@ class OutputInfo extends Component {
             {name}
           </Typography>
           <Typography component="p">
-            processing time {currentOutput['processing_time']}
+            Inferred in {currentOutput['processing_time']} seconds.
           </Typography>
         </Paper>
       </div>

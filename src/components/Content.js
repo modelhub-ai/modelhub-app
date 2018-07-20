@@ -72,7 +72,7 @@ class Content extends Component {
       {
         name: 'Test',
         component: Test,
-        use: true,
+        use: config.allow_user_input,
       },
       {
         name: 'Installation',

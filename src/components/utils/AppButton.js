@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import glamorous from 'glamorous';
+import theme from '../../theme.js';
 
 /**
  * AppButton Class
@@ -17,14 +18,11 @@ class AppButton extends Component {
     const GButton = glamorous(Button)({
       marginRight: '15px !important',
       height: '25px !important',
+      color: '#fff !important',
+      backgroundColor: theme.darkTeal + ' !important',
     });
     return (
-      <GButton
-        variant="contained"
-        color="primary"
-        target={'_blank'}
-        href={href}
-      >
+      <GButton variant="flat" target={'_blank'} href={href}>
         {text}
       </GButton>
     );

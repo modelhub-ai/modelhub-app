@@ -39,7 +39,6 @@ class Demo extends Component {
         return response.json();
       })
       .then(function(result) {
-        console.log(result);
         that.setState({
           currentOutput: result, // currently one object, should be list of
           // objects

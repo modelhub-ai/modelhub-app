@@ -13,8 +13,14 @@ class LabelList extends Component {
    * @return {ReactElement}
    */
   render() {
-    // const {currentOutput} = this.props;
-    return <BarPlot />;
+    const {currentOutput} = this.props;
+    return (
+      <BarPlot
+        data={
+          currentOutput['output'] !== undefined ? currentOutput['output'] : []
+        }
+      />
+    );
   }
 }
 

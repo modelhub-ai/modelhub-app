@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabContainer from './TabContainer';
+import theme from '../theme.js';
 
 const styles = (theme) => ({
   root: {
@@ -24,7 +25,7 @@ class ContentTabs extends Component {
   constructor() {
     super();
     this.state = {
-      value: 3, // 0
+      value: 0, // 3
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
@@ -58,10 +59,11 @@ class ContentTabs extends Component {
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
+            TabIndicatorProps={{
+              style: {backgroundColor: theme.darkTeal + ' !important'},
+            }}
             value={this.state.value}
             onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
             fullWidth
             centered
           >
