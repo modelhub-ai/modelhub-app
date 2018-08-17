@@ -16,9 +16,9 @@ class ImageFocus extends Component {
     const GDiv = glamorous.div({
       height: 500,
       backgroundColor: '#eeeeee',
-      border: '1px solid #000',
+      border: '0px solid #000',
       background: 'url(' + src + ') center center no-repeat',
-      backgroundSize: 'contain',
+      backgroundSize: '50%',
     });
     return <GDiv />;
   }
