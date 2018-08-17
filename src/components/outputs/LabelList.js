@@ -14,13 +14,9 @@ class LabelList extends Component {
    */
   render() {
     const {currentOutput} = this.props;
-    return (
-      <BarPlot
-        data={
-          currentOutput['output'] !== undefined ? currentOutput['output'] : []
-        }
-      />
-    );
+    return currentOutput['output'] !== undefined ? (
+      <BarPlot data={currentOutput['output']} />
+    ) : null;
   }
 }
 

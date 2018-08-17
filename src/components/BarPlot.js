@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 import Plot from 'react-plotly.js';
-// import {sortBy} from 'lodash';
+import {sortBy} from 'lodash';
 import theme from '../theme.js';
 
 /**
@@ -12,6 +12,9 @@ import theme from '../theme.js';
 class BarPlot extends Component {
   /**
    * Renders a horizontal bar plot showing probabilities
+   * assumes only the first output
+   * assumes topX given
+   * assumes sorting given
    * @return {ReactElement}
    */
   render() {
@@ -21,14 +24,13 @@ class BarPlot extends Component {
     const topX = 5;
     const {data} = this.props;
     // sort in ascending order
-    // let sortedResult = sortBy(data, 'probability');
+    let sortedResult = sortBy(data[0]['prediction'], 'probability');
     // Take the top x entries
-    let topXResult = data.slice(-1 * topX);
-    // var yAxisTitle = "top " + topX.toString() + " classes";
+    let topXResult = sortedResult.slice(-1 * topX);
+    // let yAxisTitle = 'top ' + topX.toString() + ' classes';
     let x = [];
     let y = [];
     for (let key in topXResult) {
-      // .slice(0, 5)
       x.push(parseFloat(topXResult[key].probability).toFixed(3));
       y.push(topXResult[key].label);
     }
@@ -65,7 +67,7 @@ class BarPlot extends Component {
           },
           yaxis: {
             fixedrange: true,
-            // title: yAxisTitle
+            // title: yAxisTitle,
           },
         }}
         config={theme.plotlyConfig}
