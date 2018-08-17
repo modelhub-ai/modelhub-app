@@ -16,27 +16,19 @@ const models = [
   // }
   {
     id: 'd50796da-87f2-4493-846e-6eeb498acc63',
-    url: 'http://localhost',
-    api: ':4000/api/',
-    viewer: ':4001',
-    name: 'SqueezeNet',
+    url: 'http://52.91.176.186',
+    api: ':80/api/',
+    viewer: ':81',
+    name: 'squeeze-net',
     task_extended: 'ImageNet classification',
   },
   {
-    id: '985c8604-1381-4ebf-85af-bfe32080fb55',
-    url: 'http://localhost',
-    api: ':4002/api/',
-    viewer: ':4003',
-    name: 'CardiacFCN',
-    task_extended: 'Segmenting the right ventricle in MRI',
-  },
-  {
-    id: 'ccc16d36-d788-43eb-9e53-2125c97888df',
-    url: 'http://localhost',
-    api: ':4004/api/',
-    viewer: ':4005',
-    name: 'CascadedFCN_Liver',
-    task_extended: 'Liver and liver lesion segmentation',
+    id: '6c7d087b-ad67-4e36-8210-28b445d4d11b',
+    url: 'http://107.21.130.166',
+    api: ':80/api/',
+    viewer: ':81',
+    name: 'alex-net',
+    task_extended: 'ImageNet classification',
   },
 ];
 export default models;
