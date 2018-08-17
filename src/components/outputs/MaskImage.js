@@ -12,7 +12,7 @@ class MaskImage extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {currentOutput} = this.props;
+    // const {currentOutput} = this.props;
     return <div>{'MaskImage'}</div>;
   }
 }

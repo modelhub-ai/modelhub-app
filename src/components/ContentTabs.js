@@ -6,7 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabContainer from './TabContainer';
-import theme from '../theme.js';
+// import theme from '../theme.js';
 
 const styles = (theme) => ({
   root: {
