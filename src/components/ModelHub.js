@@ -3,7 +3,6 @@ import glamorous from 'glamorous';
 import ModelList from './ModelList';
 import Content from './Content';
 import Welcome from './Welcome';
-import models from '../models';
 
 /**
  * ModelHub class
@@ -17,12 +16,11 @@ class ModelHub extends Component {
   constructor() {
     super();
     this.state = {
-      extendedModels: models.map((model) => {
-        return this.extendModel(model);
-      }),
+      extendedModels: [],
       currentModelIndex: 0, // -1
     };
     this.handleModelChoice = this.handleModelChoice.bind(this);
+    this.fetchModels = this.fetchModels.bind(this);
   }
 
   /**
@@ -33,12 +31,37 @@ class ModelHub extends Component {
   handleModelChoice(event) {
     const value = event.currentTarget.value;
     this.setState({currentModelIndex: value});
-    console.log('current model: ', models[value].name.toLowerCase());
+    console.log(
+      'current model: ',
+      this.state.extendedModels[value].name.toLowerCase()
+    );
   }
 
   /**
-   * Adds more porperties to models based on REST API
-   * @param  {object} model model object from Models.js
+   * Fetches the model json from modelhub-ai/modelhub repository
+   * and sets the "extendedModels" state.
+   * Hard coded for first 4 models ONLY *************
+   * @param  {string} url url of json file
+   */
+  fetchModels(url) {
+    const that = this;
+    fetch(url)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        that.setState({
+          extendedModels: result.slice(0, 4).map((model) => {
+            return that.extendModel(model);
+          }),
+        });
+      });
+  }
+
+  /**
+   * Adds more properties to models based on REST API
+   * @param  {object} model model object from model.json
+   * (modelhub-ai/modelhub repository)
    * @return {object}       extended model
    */
   extendModel(model) {
@@ -59,6 +82,15 @@ class ModelHub extends Component {
   }
 
   /**
+   * When component mounts, fetch the models.json from github.
+   */
+  componentDidMount() {
+    this.fetchModels(
+      'https://raw.githubusercontent.com/modelhub-ai/modelhub/master/models.json'
+    );
+  }
+
+  /**
    * Renders ModelHub
    * @return {ReactElement}
    */
@@ -71,7 +103,7 @@ class ModelHub extends Component {
       position: 'relative',
       display: 'flex',
     });
-    return (
+    return extendedModels.length !== 0 ? (
       <GDiv>
         <ModelList
           models={extendedModels}
@@ -84,7 +116,7 @@ class ModelHub extends Component {
           <Content model={extendedModels[currentModelIndex]} />
         )}
       </GDiv>
-    );
+    ) : null;
   }
 }
 
