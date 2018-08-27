@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 // The main input components
 import Images from './inputs/Images';
 import Dicom from './inputs/Dicom';
-import TestPlaceholder from './utils/TestPlaceholder';
-import NoSupport from './utils/NoSupport';
+import Placeholder from './utils/Placeholder';
 
 /**
  * Input
@@ -42,10 +41,10 @@ class Input extends Component {
         );
         break;
       case 'test-placeholder':
-        component = <TestPlaceholder io={'input'} />;
+        component = <Placeholder message={'input'} />;
         break;
       default:
-        component = <NoSupport message={'file type'} />;
+        component = <Placeholder message={'file type'} />;
     }
     return component;
   }

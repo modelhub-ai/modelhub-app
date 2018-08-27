@@ -21,8 +21,9 @@ class Test extends Component {
       currentInput: '',
       currentOutput: {},
     };
-    this.handleUploadImage = this.handleUploadImage.bind(this);
     this.uploadRef = this.uploadRef.bind(this);
+    this.displayInput = this.displayInput.bind(this);
+    this.handleUploadImage = this.handleUploadImage.bind(this);
   }
   /**
    * Callback for form reference in TestUpload
@@ -32,13 +33,11 @@ class Test extends Component {
     this.inputRef = ref;
   }
   /**
-   * When a file is uploaded - passed on to TestUpload
-   * @param  {UploadEvent} event upload event
+   * Given an uploaded file, this function will read it and if output is "ok",
+   * it will display it through changing the state.
+   * @param  {blob} file file through form
    */
-  handleUploadImage(event) {
-    event.preventDefault();
-    const file = this.inputRef.files[0];
-    // input
+  displayInput(file) {
     let reader = new FileReader();
     reader.onloadend = () => {
       this.setState({
@@ -47,7 +46,14 @@ class Test extends Component {
       });
     };
     reader.readAsDataURL(file);
-    // output
+  }
+  /**
+   * When a file is uploaded - passed on to TestUpload
+   * @param  {UploadEvent} event upload event
+   */
+  handleUploadImage(event) {
+    event.preventDefault();
+    const file = this.inputRef.files[0];
     const {config} = this.props.fetches;
     const data = new FormData();
     data.append('file', file);
@@ -56,12 +62,23 @@ class Test extends Component {
       body: data,
     }).then((response) => {
       response.json().then((result) => {
-        this.setState({
-          // output type does not change as images are uploaded,
-          // but would like to keep the test placeholder until first upload.
-          outputType: config.model.io.output,
-          currentOutput: result,
-        });
+        console.log(result);
+        // if result is ok
+        if (result.output !== undefined) {
+          this.displayInput(file);
+          this.setState({
+            // output type does not change as images are uploaded,
+            // but would like to keep the test placeholder until first upload.
+            outputType: config.model.io.output,
+            currentOutput: result,
+          });
+        } else {
+          // if result is not ok
+          this.setState({
+            inputType: '',
+            outputType: [{name: '', type: 'test-placeholder'}],
+          });
+        }
       });
     });
   }

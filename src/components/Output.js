@@ -8,8 +8,7 @@ import Vector from './outputs/Vector';
 import MaskImage from './outputs/MaskImage';
 import Heatmap from './outputs/Heatmap';
 import Image from './outputs/Image';
-import TestPlaceholder from './utils/TestPlaceholder';
-import NoSupport from './utils/NoSupport';
+import Placeholder from './utils/Placeholder';
 
 /**
  * Output
@@ -56,14 +55,14 @@ class Output extends Component {
         break;
       // Alien format we are not able to deal with yet.
       case 'custom':
-        outputDisplay = <NoSupport message={'output type'} />;
+        outputDisplay = <Placeholder message={'output type'} />;
         break;
       // test-placeholder
       case 'test-placeholder':
-        outputDisplay = <TestPlaceholder io={'output'} />;
+        outputDisplay = <Placeholder message={'output'} />;
         break;
       default:
-        outputDisplay = <NoSupport message={'output type'} />;
+        outputDisplay = <Placeholder message={'output type'} />;
     }
     return outputDisplay;
   }

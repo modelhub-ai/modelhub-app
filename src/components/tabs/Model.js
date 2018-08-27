@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
-import NoSupport from '../utils/NoSupport';
+import Placeholder from '../utils/Placeholder';
 
 /**
  * Model Class
@@ -45,7 +45,7 @@ class Model extends Component {
         );
         break;
       default:
-        component = <NoSupport message={'model viewer type'} />;
+        component = <Placeholder message={'viewer.'} />;
     }
     return component;
   }
