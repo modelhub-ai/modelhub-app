@@ -23,7 +23,7 @@ class OutputInfo extends Component {
    */
   render() {
     const {classes, name, currentOutput} = this.props;
-    return (
+    return currentOutput !== undefined && name !== '' ? (
       <div>
         <Paper className={classes.root} elevation={1}>
           <Typography variant="headline" component="h3">
@@ -34,7 +34,7 @@ class OutputInfo extends Component {
           </Typography>
         </Paper>
       </div>
-    );
+    ) : null;
   }
 }
 

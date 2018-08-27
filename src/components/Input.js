@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 // The main input components
 import Images from './inputs/Images';
 import Dicom from './inputs/Dicom';
+import TestPlaceholder from './utils/TestPlaceholder';
 import NoSupport from './utils/NoSupport';
 
 /**
@@ -17,13 +18,14 @@ class Input extends Component {
    */
   getComponent(type) {
     let component;
-    const {data, onCLickHandler, currentInput} = this.props;
+    const {test, data, onCLickHandler, currentInput} = this.props;
     switch (type) {
       case 'image/jpg':
       case 'image/jpeg':
       case 'image/png':
         component = (
           <Images
+            test={test}
             data={data}
             onCLickHandler={onCLickHandler}
             currentInput={currentInput}
@@ -39,8 +41,11 @@ class Input extends Component {
           />
         );
         break;
+      case 'test-placeholder':
+        component = <TestPlaceholder io={'input'} />;
+        break;
       default:
-        component = <NoSupport message={'sample file type'} />;
+        component = <NoSupport message={'file type'} />;
     }
     return component;
   }
@@ -55,13 +60,15 @@ class Input extends Component {
 }
 
 Input.propTypes = {
+  test: PropTypes.bool,
   type: PropTypes.string.isRequired,
-  data: PropTypes.oneOfType([
-    PropTypes.array.isRequired,
-    PropTypes.string.isRequired,
-  ]),
-  onCLickHandler: PropTypes.func.isRequired,
-  currentInput: PropTypes.string.isRequired,
+  data: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  onCLickHandler: PropTypes.func,
+  currentInput: PropTypes.string,
+};
+
+Input.defaultProps = {
+  test: false,
 };
 
 export default Input;

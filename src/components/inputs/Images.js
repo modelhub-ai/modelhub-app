@@ -13,23 +13,26 @@ class Images extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {data, onCLickHandler, currentInput} = this.props;
+    const {test, data, onCLickHandler, currentInput} = this.props;
     return (
       <div>
         <ImageFocus src={currentInput} />
-        <ImageGallery
-          data={data}
-          onCLickHandler={onCLickHandler}
-          currentInput={currentInput}
-        />
+        {test ? null : (
+          <ImageGallery
+            data={data}
+            onCLickHandler={onCLickHandler}
+            currentInput={currentInput}
+          />
+        )}
       </div>
     );
   }
 }
 
 Images.propTypes = {
-  data: PropTypes.array.isRequired,
-  onCLickHandler: PropTypes.func.isRequired,
+  test: PropTypes.bool.isRequired,
+  data: PropTypes.array,
+  onCLickHandler: PropTypes.func,
   currentInput: PropTypes.string.isRequired,
 };
 

@@ -14,11 +14,12 @@ class Layout extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {input, output} = this.props;
+    const {test, input, upload, output} = this.props;
     return (
       <Grid container spacing={24}>
         <Grid item xs={12} sm={12} md={6}>
           {input}
+          {test ? upload : null}
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
           {output}
@@ -29,7 +30,9 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
+  test: PropTypes.bool,
   input: PropTypes.node.isRequired,
+  upload: PropTypes.node,
   output: PropTypes.node.isRequired,
 };
 
