@@ -4,6 +4,7 @@ import TextPair from '../utils/TextPair';
 import AppButton from '../utils/AppButton';
 import Typography from '@material-ui/core/Typography';
 import glamorous from 'glamorous';
+import Installation from './Installation';
 
 /**
  * Overview Class
@@ -31,6 +32,7 @@ class Overview extends Component {
         {meta.data_source !== undefined ? (
           <AppButton text={'data source'} href={meta.data_source} />
         ) : null}
+        <Installation name={meta.name} />
       </div>
     );
   }

@@ -25,7 +25,7 @@ class ContentTabs extends Component {
   constructor() {
     super();
     this.state = {
-      value: 4, // 0
+      value: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);

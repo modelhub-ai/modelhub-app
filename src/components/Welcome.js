@@ -21,7 +21,7 @@ class Welcome extends Component {
     return (
       <GMain>
         <Typography noWrap>
-          Welcome to modelhub!<br />Plug & Predict solutions for medical AI
+          Welcome to modelhub!<br />Plug & Predict solutions for reproducible AI
           research<br />select a model to start
         </Typography>
       </GMain>

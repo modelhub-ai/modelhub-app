@@ -9,7 +9,6 @@ import Publication from './tabs/Publication';
 import Model from './tabs/Model';
 import Demo from './tabs/Demo';
 import Test from './tabs/Test';
-import Installation from './tabs/Installation';
 
 const styles = (theme) => ({
   content: {
@@ -73,11 +72,6 @@ class Content extends Component {
         name: 'Test',
         component: Test,
         use: config.allow_user_input,
-      },
-      {
-        name: 'Installation',
-        component: Installation,
-        use: true,
       },
     ];
     return tabs;

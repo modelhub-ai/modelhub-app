@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-// import Typography from '@material-ui/core/Typography';
-// import TextPair from '../utils/TextPair';
-// import glamorous from 'glamorous';
+import Typography from '@material-ui/core/Typography';
+import TextPair from '../utils/TextPair';
+import AppButton from '../utils/AppButton';
+import glamorous from 'glamorous';
 
 /**
  * Installation Class
@@ -14,81 +15,64 @@ class Installation extends Component {
    * @return {ReactElement}
    */
   render() {
-    //
-    return <div>{'installation'}</div>; // {installationContent}
+    const GDiv = glamorous.div({
+      marginTop: 25,
+    });
+    const {name} = this.props;
+    return (
+      <GDiv>
+        <Typography variant="title">To run this model locally:</Typography>
+        <br />
+        <Typography variant="body2">
+          1. Install{' '}
+          <a target={'_blank'} href={'https://docs.docker.com/install/'}>
+            Docker
+          </a>. (CE is sufficient)
+          <br />
+          2. Install{' '}
+          <a target={'_blank'} href={'https://www.python.org/'}>
+            Python 2.7 or 3.6
+          </a>{' '}
+          or higher, if not already installed.
+          <br />
+          3. Download the{' '}
+          <a
+            target={'_blank'}
+            href={
+              'https://raw.githubusercontent.com/modelhub-ai/modelhub/master/start.py'
+            }
+          >
+            modelhub start script
+          </a>{' '}
+          and place it into a new folder.
+          <br />
+          4. Open a terminal and run:
+          <TextPair
+            title={''}
+            body={`python start.py ${name}`}
+            spacer={10}
+            code
+          />
+          To access a jupyter notebook, run:
+          <TextPair
+            title={''}
+            body={`python start.py ${name} -e`}
+            spacer={10}
+            code
+          />
+        </Typography>
+        <br />
+        <AppButton
+          text={'modelhub documentation'}
+          href={'https://modelhub.readthedocs.io/en/latest/index.html'}
+        />
+      </GDiv>
+    );
   }
 }
 
 Installation.propTypes = {
-  model: PropTypes.object,
-  fetches: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default Installation;
-
-// let installationContent = [];
-// script.forEach((scriptInstance, index) => {
-//   const {variables} = scriptInstance;
-//   if (scriptInstance.type === 'bash') {
-//     installationContent.push(
-//       <div key={index}>
-//         <GTypography variant="headline">
-//           Install using bash script.
-//         </GTypography>
-//         <TextPair
-//           title={
-//             <div>
-//               1. Install{' '}
-//               <a
-//                 target={'_blank'}
-//                 href={'https://docs.docker.com/install/'}
-//               >
-//                 Docker
-//               </a>. (CE is sufficient)
-//             </div>
-//           }
-//           spacer={10}
-//         />
-//         <TextPair
-//           title={'2. Download the bash script.'}
-//           body={`$ curl -O https://raw.githubusercontent.com/modelhub-ai/modelhub/master/start_scripts/${
-//             variables.file_name
-//           }`}
-//           spacer={10}
-//           code
-//         />
-//         <TextPair
-//           title={'3. Change permissions.'}
-//           body={`$ chmod +x ${variables.file_name}`}
-//           spacer={10}
-//           code
-//         />
-//         <TextPair title={'4. Run.'} spacer={10} />
-//         <TextPair
-//           title={'For the basic test drive version:'}
-//           body={`$ sudo ./${variables.file_name}`}
-//           spacer={10}
-//           code
-//         />
-//         <TextPair
-//           title={'For the jupyter notebook version:'}
-//           body={`$ sudo ./${variables.file_name} -e`}
-//           spacer={10}
-//           code
-//         />
-//         <TextPair
-//           title={'To explore the docker:'}
-//           body={`$ sudo ./${variables.file_name} -b`}
-//           spacer={10}
-//           code
-//         />
-//       </div>
-//     );
-//   } else if (scriptInstance.type !== 'bash') {
-//     installationContent.push(
-//       <GTypography key={index} variant="headline">
-//         Installation type is not supported by this frontend.
-//       </GTypography>
-//     );
-//   }
-// });
