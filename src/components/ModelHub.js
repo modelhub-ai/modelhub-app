@@ -17,7 +17,7 @@ class ModelHub extends Component {
     super();
     this.state = {
       extendedModels: [],
-      currentModelIndex: 0, // -1
+      currentModelIndex: -1, // 0
     };
     this.handleModelChoice = this.handleModelChoice.bind(this);
     this.fetchModels = this.fetchModels.bind(this);
