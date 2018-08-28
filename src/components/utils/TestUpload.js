@@ -58,8 +58,8 @@ class TestUpload extends Component {
 
 TestUpload.propTypes = {
   classes: PropTypes.object.isRequired,
-  // name: PropTypes.string.isRequired,
-  // currentOutput: PropTypes.object.isRequired,
+  handleUploadImage: PropTypes.func.isRequired,
+  // uploadRef: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(TestUpload);

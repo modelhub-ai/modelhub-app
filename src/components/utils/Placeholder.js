@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import glamorous from 'glamorous';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import theme from '../../theme.js';
 
 /**
  * Placeholder
@@ -34,20 +36,25 @@ class Placeholder extends Component {
   render() {
     const GDiv = glamorous.div({
       height: 500,
-      backgroundColor: '#fff',
+      backgroundColor: '#eeeeee',
       position: 'relative !important',
+      marginBottom: 10,
     });
-    const GText = glamorous(Typography)({
+    const GText = glamorous.div({
       position: 'absolute !important',
       top: '50% !important',
       left: '50% !important',
       transform: 'translate(-50%, -50%) !important',
     });
-    const {message} = this.props;
+    const {spinner, message} = this.props;
     return (
       <GDiv>
-        <GText variant="title" noWrap>
-          {this.getText(message)}
+        <GText>
+          {spinner ? (
+            <CircularProgress style={{color: theme.darkTeal}} size={50} />
+          ) : (
+            this.getText(message)
+          )}
         </GText>
       </GDiv>
     );
@@ -55,7 +62,11 @@ class Placeholder extends Component {
 }
 
 Placeholder.propTypes = {
-  message: PropTypes.string.isRequired,
+  spinner: PropTypes.bool,
+  message: PropTypes.string,
+};
+Placeholder.defaultProps = {
+  spinner: false,
 };
 
 export default Placeholder;

@@ -15,6 +15,7 @@ class OutputDisplay extends Component {
     const {children} = this.props;
     const GDiv = glamorous.div({
       height: 500,
+      marginBottom: 10,
       // backgroundColor: '#eeeeee',
     });
     return <GDiv>{children}</GDiv>;

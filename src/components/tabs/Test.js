@@ -16,6 +16,7 @@ class Test extends Component {
   constructor() {
     super();
     this.state = {
+      status: 'ready', // calculating, done
       inputType: 'test-placeholder',
       outputType: [{name: '', type: 'test-placeholder'}],
       currentInput: '',
@@ -41,7 +42,6 @@ class Test extends Component {
     let reader = new FileReader();
     reader.onloadend = () => {
       this.setState({
-        inputType: file.type,
         currentInput: reader.result,
       });
     };
@@ -52,7 +52,16 @@ class Test extends Component {
    * @param  {UploadEvent} event upload event
    */
   handleUploadImage(event) {
+    // set status to calculating and empty everything.
     event.preventDefault();
+    this.setState({
+      status: 'calculating',
+      inputType: 'test-placeholder',
+      outputType: [{name: '', type: 'test-placeholder'}],
+      currentInput: '',
+      currentOutput: {},
+    });
+    //
     const file = this.inputRef.files[0];
     const {config} = this.props.fetches;
     const data = new FormData();
@@ -62,19 +71,21 @@ class Test extends Component {
       body: data,
     }).then((response) => {
       response.json().then((result) => {
-        console.log(result);
         // if result is ok
         if (result.output !== undefined) {
           this.displayInput(file);
           this.setState({
             // output type does not change as images are uploaded,
             // but would like to keep the test placeholder until first upload.
+            status: 'done',
+            inputType: file.type,
             outputType: config.model.io.output,
             currentOutput: result,
           });
         } else {
           // if result is not ok
           this.setState({
+            status: 'done',
             inputType: '',
             outputType: [{name: '', type: 'test-placeholder'}],
           });
@@ -87,7 +98,13 @@ class Test extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {inputType, outputType, currentInput, currentOutput} = this.state;
+    const {
+      status,
+      inputType,
+      outputType,
+      currentInput,
+      currentOutput,
+    } = this.state;
     return (
       <div>
         <Layout
@@ -99,7 +116,13 @@ class Test extends Component {
               uploadRef={this.uploadRef}
             />
           }
-          output={<Output type={outputType} currentOutput={currentOutput} />}
+          output={
+            <Output
+              status={status}
+              type={outputType}
+              currentOutput={currentOutput}
+            />
+          }
         />
       </div>
     );

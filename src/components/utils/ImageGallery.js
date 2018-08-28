@@ -33,7 +33,7 @@ class ImageGallery extends Component {
   render() {
     const {classes, data, onCLickHandler} = this.props; // currentInput
     const GGallery = glamorous.div({
-      backgroundColor: '#eeeeee',
+      backgroundColor: '#fff',
       padding: 10,
       overflowY: 'hidden',
       height: 100,

@@ -53,13 +53,18 @@ class Input extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {type} = this.props;
-    return <div>{this.getComponent(type)}</div>;
+    const {status, type} = this.props;
+    return status === 'calculating' ? (
+      <Placeholder spinner />
+    ) : (
+      <div>{this.getComponent(type)}</div>
+    );
   }
 }
 
 Input.propTypes = {
   test: PropTypes.bool,
+  status: PropTypes.string,
   type: PropTypes.string.isRequired,
   data: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   onCLickHandler: PropTypes.func,

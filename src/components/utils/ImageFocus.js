@@ -19,6 +19,7 @@ class ImageFocus extends Component {
       border: '0px solid #000',
       background: 'url(' + src + ') center center no-repeat',
       backgroundSize: '50%',
+      marginBottom: 10,
     });
     return <GDiv />;
   }

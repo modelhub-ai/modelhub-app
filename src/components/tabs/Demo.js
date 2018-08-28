@@ -18,6 +18,7 @@ class Demo extends Component {
   constructor() {
     super();
     this.state = {
+      status: 'ready',
       inputType: '',
       outputType: [{name: '', type: ''}],
       currentInput: '',
@@ -32,6 +33,9 @@ class Demo extends Component {
    * @param  {string} src full url of a sample file
    */
   predict(src) {
+    this.setState({
+      status: 'calculating',
+    });
     const {predict_sample} = this.props.model;
     let that = this;
     fetch(predict_sample + src.split('/')[src.split('/').length - 1])
@@ -40,8 +44,9 @@ class Demo extends Component {
       })
       .then(function(result) {
         that.setState({
-          currentOutput: result, // currently one object, should be list of
-          // objects
+          status: 'done',
+          // currently one object, should be list of objects
+          currentOutput: result,
         });
       });
   }
@@ -79,7 +84,13 @@ class Demo extends Component {
    */
   render() {
     const {fetches} = this.props;
-    const {inputType, outputType, currentInput, currentOutput} = this.state;
+    const {
+      status,
+      inputType,
+      outputType,
+      currentInput,
+      currentOutput,
+    } = this.state;
     return (
       <div>
         <Layout
@@ -91,7 +102,13 @@ class Demo extends Component {
               currentInput={currentInput}
             />
           }
-          output={<Output type={outputType} currentOutput={currentOutput} />}
+          output={
+            <Output
+              status={status}
+              type={outputType}
+              currentOutput={currentOutput}
+            />
+          }
         />
       </div>
     );

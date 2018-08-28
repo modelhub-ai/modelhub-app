@@ -53,14 +53,11 @@ class Output extends Component {
       case 'image':
         outputDisplay = <Image currentOutput={currentOutput} />;
         break;
-      // Alien format we are not able to deal with yet.
-      case 'custom':
-        outputDisplay = <Placeholder message={'output type'} />;
-        break;
       // test-placeholder
       case 'test-placeholder':
         outputDisplay = <Placeholder message={'output'} />;
         break;
+      case 'custom':
       default:
         outputDisplay = <Placeholder message={'output type'} />;
     }
@@ -73,11 +70,13 @@ class Output extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {type, currentOutput} = this.props;
+    const {status, type, currentOutput} = this.props;
     const singleOutput = type[0];
     // loop though type here
     // should be list of objects with "name" & "type" properties.
-    return (
+    return status === 'calculating' ? (
+      <Placeholder spinner />
+    ) : (
       <div>
         <OutputDisplay>{this.getComponent(singleOutput.type)}</OutputDisplay>
         <OutputInfo name={singleOutput.name} currentOutput={currentOutput} />
@@ -87,6 +86,7 @@ class Output extends Component {
 }
 
 Output.propTypes = {
+  status: PropTypes.string.isRequired,
   type: PropTypes.array.isRequired,
   currentOutput: PropTypes.object.isRequired,
 };
