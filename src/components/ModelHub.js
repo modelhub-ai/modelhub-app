@@ -3,6 +3,7 @@ import glamorous from 'glamorous';
 import ModelList from './ModelList';
 import Content from './Content';
 import Welcome from './Welcome';
+import { withUrlState } from '../routes'
 
 /**
  * ModelHub class
@@ -35,6 +36,12 @@ class ModelHub extends Component {
       'current model: ',
       this.state.extendedModels[value].name.toLowerCase()
     );
+
+    // From withUrlState
+    const { goToModelHome } = this.props
+    // Too late for async setState, and no need anymore to keep model in your state,
+    // as it's now in this.props.modelId
+    goToModelHome(this.state.extendedModels[value].name.toLowerCase())
   }
 
   /**
@@ -120,4 +127,4 @@ class ModelHub extends Component {
   }
 }
 
-export default ModelHub;
+export default withUrlState(ModelHub);

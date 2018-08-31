@@ -7,6 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabContainer from './TabContainer';
 // import theme from '../theme.js';
+import { withUrlState } from '../routes'
 
 const styles = (theme) => ({
   root: {
@@ -39,6 +40,12 @@ class ContentTabs extends Component {
   handleChange(event, value) {
     this.setState({value});
     console.log('current tab: ', this.props.tabs[value].name.toLowerCase());
+
+    const { goToTab } = this.props
+    // Same here:
+    // Too late for async setState, and no need anymore to keep model in your state,
+    // as it's now in this.props.tabId
+    goToTab(this.props.tabs[value].name.toLowerCase())
   }
 
   /**
@@ -102,4 +109,4 @@ ContentTabs.propTypes = {
   tabs: PropTypes.array.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(ContentTabs);
+export default withStyles(styles, {withTheme: true})(withUrlState(ContentTabs));
