@@ -11,25 +11,6 @@ import theme from '../../theme.js';
  */
 class Placeholder extends Component {
   /**
-   * Sets the text based on message from props
-   * @param  {string } message from props
-   * @return {string} text to display
-   */
-  getText(message) {
-    let text = '';
-    switch (message) {
-      case 'input':
-        text = 'UPLOAD';
-        break;
-      case 'output':
-        text = 'RESULT';
-        break;
-      default:
-        text = 'The model does not support this ' + message + '.';
-    }
-    return text;
-  }
-  /**
    * Renders Placeholder
    * @return {ReactElement}
    */
@@ -39,6 +20,7 @@ class Placeholder extends Component {
       backgroundColor: '#eeeeee',
       position: 'relative !important',
       marginBottom: 10,
+      textAlign: 'center',
     });
     const GText = glamorous.div({
       position: 'absolute !important',
@@ -53,7 +35,7 @@ class Placeholder extends Component {
           {spinner ? (
             <CircularProgress style={{color: theme.darkTeal}} size={50} />
           ) : (
-            this.getText(message)
+            message
           )}
         </GText>
       </GDiv>

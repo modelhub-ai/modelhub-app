@@ -53,13 +53,12 @@ class Output extends Component {
       case 'image':
         outputDisplay = <Image currentOutput={currentOutput} />;
         break;
-      // test-placeholder
-      case 'test-placeholder':
-        outputDisplay = <Placeholder message={'output'} />;
-        break;
+      // test-placeholder or custom
       case 'custom':
+      case 'test-placeholder':
       default:
-        outputDisplay = <Placeholder message={'output type'} />;
+        outputDisplay = <Placeholder message={'OUTPUT'} />;
+        break;
     }
     return outputDisplay;
   }

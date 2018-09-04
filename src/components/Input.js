@@ -17,7 +17,7 @@ class Input extends Component {
    */
   getComponent(type) {
     let component;
-    const {test, data, onCLickHandler, currentInput} = this.props;
+    const {test, message, data, onCLickHandler, currentInput} = this.props;
     switch (type) {
       case 'image/jpg':
       case 'image/jpeg':
@@ -41,10 +41,10 @@ class Input extends Component {
         );
         break;
       case 'test-placeholder':
-        component = <Placeholder message={'input'} />;
+        component = <Placeholder message={'INPUT'} />;
         break;
       default:
-        component = <Placeholder message={'file type'} />;
+        component = <Placeholder message={message} />;
     }
     return component;
   }
@@ -60,6 +60,7 @@ class Input extends Component {
 
 Input.propTypes = {
   test: PropTypes.bool,
+  message: PropTypes.string,
   type: PropTypes.string.isRequired,
   data: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   onCLickHandler: PropTypes.func,

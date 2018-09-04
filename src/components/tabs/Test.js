@@ -17,6 +17,7 @@ class Test extends Component {
     super();
     this.state = {
       status: 'ready', // calculating, done
+      message: '',
       inputType: 'test-placeholder',
       outputType: [{name: '', type: 'test-placeholder'}],
       currentInput: '',
@@ -72,7 +73,7 @@ class Test extends Component {
     }).then((response) => {
       response.json().then((result) => {
         // if result is ok
-        if (result.output !== undefined) {
+        if (result.error === undefined) {
           this.displayInput(file);
           this.setState({
             // output type does not change as images are uploaded,
@@ -82,10 +83,11 @@ class Test extends Component {
             outputType: config.model.io.output,
             currentOutput: result,
           });
-        } else {
+        } else if (result.error) {
           // if result is not ok
           this.setState({
             status: 'done',
+            message: result.error,
             inputType: '',
             outputType: [{name: '', type: 'test-placeholder'}],
           });
@@ -100,6 +102,7 @@ class Test extends Component {
   render() {
     const {
       status,
+      message,
       inputType,
       outputType,
       currentInput,
@@ -109,7 +112,14 @@ class Test extends Component {
       <div>
         <Layout
           test
-          input={<Input test type={inputType} currentInput={currentInput} />}
+          input={
+            <Input
+              test
+              message={message}
+              type={inputType}
+              currentInput={currentInput}
+            />
+          }
           upload={
             <TestUpload
               handleUploadImage={this.handleUploadImage}

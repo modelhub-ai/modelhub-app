@@ -40,7 +40,6 @@ class ModelHub extends Component {
   /**
    * Fetches the model json from modelhub-ai/modelhub repository
    * and sets the "extendedModels" state.
-   * Hard coded for first 4 models ONLY *************
    * @param  {string} url url of json file
    */
   fetchModels(url) {
@@ -51,7 +50,8 @@ class ModelHub extends Component {
       })
       .then(function(result) {
         that.setState({
-          extendedModels: result.slice(0, 4).map((model) => {
+          extendedModels: result.map((model) => {
+            // .slice(0, 4)
             return that.extendModel(model);
           }),
         });
