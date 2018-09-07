@@ -5,6 +5,9 @@
 // https://github.com/plotly/plotly.js/blob/master/src/components/modebar/buttons.js
 const theme = {
   background: '#f7fcfc',
+  primary: '#4285f4', // blue
+  secondary: '#ff9100', // orange
+  //
   orange: '#ffab40',
   lightTeal: '#009688',
   darkTeal: '#00796b',

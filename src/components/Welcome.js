@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import glamorous from 'glamorous';
 import Typography from '@material-ui/core/Typography';
+import logo from '../img/logo-blue.svg';
 
 /**
  * [Welcome description]
@@ -18,11 +19,17 @@ class Welcome extends Component {
       textAlign: 'center',
       paddingTop: 200,
     });
+    const Gimg = glamorous.img({
+      width: 250,
+      marginBottom: 20,
+    });
     return (
       <GMain>
-        <Typography noWrap>
-          Welcome to modelhub!<br />Plug & Predict solutions for reproducible AI
-          research<br />select a model to start
+        <a href="http://modelhub.ai/" target="_blank">
+          <Gimg src={logo} alt="logo" />
+        </a>
+        <Typography variant="title" noWrap>
+          Welcome to Modelhub!<br />Select a model to start.
         </Typography>
       </GMain>
     );

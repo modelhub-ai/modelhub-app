@@ -47,7 +47,7 @@ class BarPlot extends Component {
             textposition: 'outside',
             hoverinfo: 'none',
             marker: {
-              color: theme.darkTeal,
+              color: theme.primary,
             },
           },
         ]}

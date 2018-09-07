@@ -6,11 +6,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabContainer from './TabContainer';
-// import theme from '../theme.js';
+import them from '../theme.js';
 
 const styles = (theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
+  },
+  indicator: {
+    backgroundColor: them.secondary + ' !important',
   },
 });
 
@@ -59,13 +62,13 @@ class ContentTabs extends Component {
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
-            TabIndicatorProps={{
-              style: {backgroundColor: theme.darkTeal + ' !important'},
-            }}
             value={this.state.value}
             onChange={this.handleChange}
             fullWidth
             centered
+            classes={{
+              indicator: classes.indicator,
+            }}
           >
             {tabs.map((tab, index) => {
               return <Tab key={index} label={tab.name} />;
@@ -103,3 +106,4 @@ ContentTabs.propTypes = {
 };
 
 export default withStyles(styles, {withTheme: true})(ContentTabs);
+// indicatorColor="secondary"

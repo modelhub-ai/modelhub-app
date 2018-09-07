@@ -30,7 +30,7 @@ class TestUpload extends Component {
       marginRight: '15px !important',
       height: '25px !important',
       color: '#fff !important',
-      backgroundColor: theme.darkTeal + ' !important',
+      backgroundColor: theme.primary + ' !important',
       position: 'absolute !important',
       top: '50% !important',
       left: '50% !important',

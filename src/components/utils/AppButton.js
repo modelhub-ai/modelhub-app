@@ -19,7 +19,7 @@ class AppButton extends Component {
       marginRight: '15px !important',
       height: '25px !important',
       color: '#fff !important',
-      backgroundColor: theme.darkTeal + ' !important',
+      backgroundColor: theme.primary + ' !important',
     });
     return (
       <GButton variant="flat" target={'_blank'} href={href}>
