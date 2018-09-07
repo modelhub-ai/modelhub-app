@@ -50,8 +50,7 @@ class ModelHub extends Component {
       })
       .then(function(result) {
         that.setState({
-          extendedModels: result.map((model) => {
-            // .slice(0, 4)
+          extendedModels: result.slice(0, 4).map((model) => {
             return that.extendModel(model);
           }),
         });

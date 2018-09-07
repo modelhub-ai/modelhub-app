@@ -20,7 +20,7 @@ class Header extends Component {
    */
   render() {
     const Gimg = glamorous.img({
-      width: 150,
+      width: 130,
     });
     const GAppBar = glamorous(AppBar)({
       zIndex: '1500 !important',
@@ -33,25 +33,37 @@ class Header extends Component {
     return (
       <GAppBar position="absolute">
         <Toolbar>
-          <a href="http://modelhub.ai/" target="_blank">
+          <a
+            href="http://modelhub.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Gimg src={logo} alt="logo" />
           </a>
           <GDiv>
             <IconButton aria-haspopup="false" color="inherit">
-              <a href="https://github.com/modelhub-ai" target="_blank">
+              <a
+                href="https://github.com/modelhub-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <GithubCircleIcon color={'#fff'} size={32} />
               </a>
             </IconButton>
             <IconButton aria-haspopup="false" color="inherit">
-              <a href="https://hub.docker.com/u/modelhub/" target="_blank">
+              <a
+                href="https://hub.docker.com/u/modelhub/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <DockerIcon color={'#fff'} size={32} />
               </a>
             </IconButton>
-
             <IconButton aria-haspopup="false" color="inherit">
               <a
                 href="https://modelhub.readthedocs.io/en/latest/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <FileDocumentOutlineIcon color={'#fff'} size={28} />
               </a>

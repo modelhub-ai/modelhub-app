@@ -25,7 +25,7 @@ class Welcome extends Component {
     });
     return (
       <GMain>
-        <a href="http://modelhub.ai/" target="_blank">
+        <a href="http://modelhub.ai/" target="_blank" rel="noopener noreferrer">
           <Gimg src={logo} alt="logo" />
         </a>
         <Typography variant="title" noWrap>
