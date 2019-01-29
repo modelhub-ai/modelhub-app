@@ -88,6 +88,11 @@ class Content extends Component {
     this.fetchData(deployed);
   }
 
+  /**
+   * fetches config and init, as well as samples and legal (if model is
+   * depolyed)
+   * @param  {bool} deployed whether the model is running on a server or not.
+   */
   fetchData(deployed) {
     const {config, samples, legal, init} = this.props.model;
     const arr = deployed ? [config, init, samples, legal] : [config, init];
