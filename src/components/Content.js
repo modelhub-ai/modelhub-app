@@ -38,15 +38,17 @@ class Content extends Component {
       },
       tabs: [],
     };
+    this.fetchData = this.fetchData.bind(this);
   }
 
   /**
    * Creates the list of tabs given the config
    * @param  {object} config config from REST API call
-   * @param  {array} samples sample file array from REST API call
+   * @param  {object} init file from contrib_src
    * @return {array} array of tabs
    */
-  createTabList(config, samples) {
+  createTabList(config, init) {
+    const {deployed} = this.props.model;
     let tabs = [
       {
         name: 'Overview',
@@ -61,17 +63,18 @@ class Content extends Component {
       {
         name: 'Model',
         component: Model,
-        use: config.viewer !== undefined ? true : false,
+        use: init['external_contrib_files'].length === 0 ? true : false,
       },
       {
         name: 'Demo',
         component: Demo,
-        use: samples.length !== 0 ? true : false,
+        use: !deployed ? false : config.allow_sample_demo ? true : false,
+        // not related to sample data existing or not.
       },
       {
         name: 'Test',
         component: Test,
-        use: config.allow_user_input,
+        use: !deployed ? false : config.allow_user_test ? true : false,
       },
     ];
     return tabs;
@@ -81,11 +84,15 @@ class Content extends Component {
    * When component mounts, get legal json
    */
   componentDidMount() {
-    const {config, samples, legal} = this.props.model;
+    const {deployed} = this.props.model;
+    this.fetchData(deployed);
+  }
+
+  fetchData(deployed) {
+    const {config, samples, legal, init} = this.props.model;
+    const arr = deployed ? [config, init, samples, legal] : [config, init];
     Promise.all(
-      [config, samples, legal].map((url) =>
-        fetch(url).then((response) => response.json())
-      )
+      arr.map((url) => fetch(url).then((response) => response.json()))
     ).then((result) => {
       // create tabs array
       const tabs = this.createTabList(result[0], result[1]);
@@ -97,8 +104,8 @@ class Content extends Component {
       this.setState({
         fetches: {
           config: result[0],
-          samples: result[1],
-          legal: result[2],
+          samples: deployed ? result[2] : {},
+          legal: deployed ? result[3] : {},
         },
         tabs: tabsFiletred,
       });

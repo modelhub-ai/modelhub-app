@@ -50,7 +50,7 @@ class ModelHub extends Component {
       })
       .then(function(result) {
         that.setState({
-          extendedModels: result.slice(0, 4).map((model) => {
+          extendedModels: result.map((model) => {
             return that.extendModel(model);
           }),
         });
@@ -58,25 +58,50 @@ class ModelHub extends Component {
   }
 
   /**
-   * Adds more properties to models based on REST API
-   * @param  {object} model model object from model.json
-   * (modelhub-ai/modelhub repository)
-   * @return {object}       extended model
+   * Adds more properties to models based on REST API.
+   * This splits the models into ones that are deployed and ones that are
+   * served static.
+   * @param  {object} model model from the fetched model registry
+   * @return {object} extended model
    */
   extendModel(model) {
-    const {url, api, viewer} = model;
-    const urlApi = url + api;
-    model.config = urlApi + 'get_config';
-    model.legal = urlApi + 'get_legal';
-    model.model_io = urlApi + 'get_model_io';
-    model.model_files = urlApi + 'get_model_files';
-    model.samples = urlApi + 'get_samples';
-    model.predict_upload = urlApi + 'predict';
-    model.predict_url = urlApi + 'predict?fileurl=';
-    model.predict_sample = urlApi + 'predict_sample?filename='; // temp
-    // extras
-    model.thumbnail = urlApi + 'thumbnail/thumbnail.jpg';
-    model.viewer = url + viewer;
+    const {url, name, api, github_branch} = model;
+    const githubRaw = 'https://raw.githubusercontent.com/modelhub-ai/';
+    model.entryPoint = githubRaw + name + '/' + github_branch;
+    model.init = model.entryPoint + '/init/init.json';
+    model.viewer =
+      'http://lutzroeder.github.io/netron/?url=' +
+      model.entryPoint +
+      '/contrib_src/model/model.onnx';
+    if (url !== undefined && api !== undefined) {
+      const urlApi = url + api;
+      model.deployed = true;
+      model.config = urlApi + 'get_config';
+      model.legal = urlApi + 'get_legal'; // {object}
+      model.model_io = urlApi + 'get_model_io';
+      model.model_files = urlApi + 'get_model_files';
+      model.samples = urlApi + 'get_samples';
+      model.predict_upload = urlApi + 'predict';
+      model.predict_url = urlApi + 'predict?fileurl=';
+      model.predict_sample = urlApi + 'predict_sample?filename='; // temp
+      model.thumbnail = urlApi + 'thumbnail/thumbnail.jpg';
+    }
+    // for models served staticly
+    else {
+      model.deployed = false;
+      model.config = model.entryPoint + '/contrib_src/model/config.json';
+      model.legal = {
+        modelhub_license:
+          githubRaw + 'modelhub-engine/master/framework/LICENSE',
+        modelhub_acknowledgements:
+          githubRaw + 'modelhub-engine/blob/master/framework/NOTICE',
+        model_license: model.entryPoint + '/contrib_src/license/model',
+        sample_data_license:
+          model.entryPoint + '/contrib_src/license/sample_data',
+      };
+      model.model_files = 'everything in model folder';
+      model.thumbnail = model.entryPoint + '/contrib_src/model/thumbnail.jpg';
+    }
     return model;
   }
 
