@@ -10,6 +10,45 @@ import Button from '@material-ui/core/Button';
  */
 class Footer extends Component {
   /**
+   * Footer constructor. If model is deployed, legal will be the same legal from
+   * props.fetches. If model is not deployed, the componentDidMount function
+   * will fetch legal and populate state.legal.
+   */
+  constructor() {
+    super();
+    this.state = {
+      legal: {},
+    };
+  }
+  /**
+   * When component mounts, check the deployed flag and fetch if need be.
+   */
+  componentDidMount() {
+    const {deployed, legal} = this.props.model;
+    if (!deployed) {
+      Promise.all(
+        [
+          legal.modelhub_license,
+          legal.modelhub_acknowledgements,
+          legal.model_license,
+          legal.sample_data_license,
+        ].map((url) => fetch(url).then((response) => response.text()))
+      ).then((result) => {
+        console.log(result);
+
+        // set state
+        this.setState({
+          legal: {
+            modelhub_license: result[0],
+            modelhub_acknowledgements: result[1],
+            model_license: result[2],
+            sample_data_license: result[3],
+          },
+        });
+      });
+    }
+  }
+  /**
    * Renders Content
    * @return {ReactElement}
    */
@@ -27,7 +66,9 @@ class Footer extends Component {
         backgroundColor: '#fafafa !important',
       },
     });
-    const {legal} = this.props.fetches;
+
+    const {deployed} = this.props.model;
+    const legal = deployed ? this.props.fetches.legal : this.state.legal;
     return (
       <GDiv>
         <GButton target={'_blank'} href={'http://modelhub.ai/'}>
@@ -49,6 +90,7 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
+  model: PropTypes.object.isRequired,
   fetches: PropTypes.object.isRequired,
 };
 

@@ -128,7 +128,7 @@ class Content extends Component {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <ContentTabs model={model} fetches={fetches} tabs={tabs} />
-        <Footer fetches={fetches} />
+        <Footer model={model} fetches={fetches} />
       </main>
     );
   }

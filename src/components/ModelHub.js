@@ -73,6 +73,7 @@ class ModelHub extends Component {
       'http://lutzroeder.github.io/netron/?url=' +
       model.entryPoint +
       '/contrib_src/model/model.onnx';
+    // for deployed models
     if (url !== undefined && api !== undefined) {
       const urlApi = url + api;
       model.deployed = true;
@@ -94,7 +95,7 @@ class ModelHub extends Component {
         modelhub_license:
           githubRaw + 'modelhub-engine/master/framework/LICENSE',
         modelhub_acknowledgements:
-          githubRaw + 'modelhub-engine/blob/master/framework/NOTICE',
+          githubRaw + 'modelhub-engine/master/framework/NOTICE',
         model_license: model.entryPoint + '/contrib_src/license/model',
         sample_data_license:
           model.entryPoint + '/contrib_src/license/sample_data',
