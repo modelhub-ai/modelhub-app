@@ -4,7 +4,7 @@ import TextPair from '../utils/TextPair';
 import AppButton from '../utils/AppButton';
 import Typography from '@material-ui/core/Typography';
 import glamorous from 'glamorous';
-import Installation from './Installation';
+import Installation from '../Installation';
 
 /**
  * Overview Class
