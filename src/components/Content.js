@@ -68,13 +68,21 @@ class Content extends Component {
       {
         name: 'Demo',
         component: Demo,
-        use: !deployed ? false : config.allow_sample_demo ? true : false,
+        use: !deployed
+          ? false
+          : config.modelhub.allow_sample_demo === undefined
+          ? true
+          : false,
         // not related to sample data existing or not.
       },
       {
         name: 'Test',
         component: Test,
-        use: !deployed ? false : config.allow_user_test ? true : false,
+        use: !deployed
+          ? false
+          : config.modelhub.allow_user_test === undefined
+          ? true
+          : false,
       },
     ];
     return tabs;
@@ -94,7 +102,7 @@ class Content extends Component {
    * @param  {bool} deployed whether the model is running on a server or not.
    */
   fetchData(deployed) {
-    const {config, samples, legal, init} = this.props.model;
+    const {config, init, samples, legal} = this.props.model;
     const arr = deployed ? [config, init, samples, legal] : [config, init];
     Promise.all(
       arr.map((url) => fetch(url).then((response) => response.json()))

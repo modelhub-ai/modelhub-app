@@ -29,7 +29,7 @@ class Model extends Component {
               title={'netron viewer'}
               height={'700'}
               width={'100%'}
-              src={model.viewer}
+              src={model.viewer + fetches.config.model.format}
               frameBorder={'0'}
             />
             <GDiv>
@@ -39,7 +39,8 @@ class Model extends Component {
                 href={'https://github.com/lutzroeder/Netron'}
               >
                 Netron
-              </a>.
+              </a>
+              .
             </GDiv>
           </div>
         );
@@ -55,7 +56,6 @@ class Model extends Component {
    */
   render() {
     const {model, fetches} = this.props;
-
     return <div>{this.getComponent(model, fetches)}</div>;
   }
 }

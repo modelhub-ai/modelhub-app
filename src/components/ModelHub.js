@@ -72,7 +72,7 @@ class ModelHub extends Component {
     model.viewer =
       'http://lutzroeder.github.io/netron/?url=' +
       model.entryPoint +
-      '/contrib_src/model/model.onnx';
+      '/contrib_src/model/model';
     // for deployed models
     if (url !== undefined && api !== undefined) {
       const urlApi = url + api;

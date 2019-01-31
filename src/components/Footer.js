@@ -34,8 +34,6 @@ class Footer extends Component {
           legal.sample_data_license,
         ].map((url) => fetch(url).then((response) => response.text()))
       ).then((result) => {
-        console.log(result);
-
         // set state
         this.setState({
           legal: {
