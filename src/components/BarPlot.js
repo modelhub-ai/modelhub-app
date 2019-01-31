@@ -21,12 +21,13 @@ class BarPlot extends Component {
     const GPlot = glamorous(Plot)({
       width: '100%',
     });
-    const topX = 5;
-    const {data} = this.props;
+    const {data, params} = this.props;
     // sort in ascending order
-    let sortedResult = sortBy(data[0]['prediction'], 'probability');
+    let sortedResult = params.sort
+      ? sortBy(data[0]['prediction'], 'probability')
+      : data[0]['prediction'];
     // Take the top x entries
-    let topXResult = sortedResult.slice(-1 * topX);
+    let topXResult = sortedResult.slice(-1 * params.top);
     // let yAxisTitle = 'top ' + topX.toString() + ' classes';
     let x = [];
     let y = [];
@@ -78,6 +79,7 @@ class BarPlot extends Component {
 
 BarPlot.propTypes = {
   data: PropTypes.array.isRequired,
+  params: PropTypes.object.isRequired,
 };
 
 export default BarPlot;

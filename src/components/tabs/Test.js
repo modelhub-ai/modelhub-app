@@ -108,6 +108,7 @@ class Test extends Component {
       currentInput,
       currentOutput,
     } = this.state;
+    const {fetches} = this.props;
     return (
       <div>
         <Layout
@@ -131,6 +132,7 @@ class Test extends Component {
               status={status}
               type={outputType}
               currentOutput={currentOutput}
+              params={fetches.config.modelhub}
             />
           }
         />

@@ -13,15 +13,16 @@ class LabelList extends Component {
    * @return {ReactElement}
    */
   render() {
-    const {currentOutput} = this.props;
+    const {currentOutput, params} = this.props;
     return currentOutput['output'] !== undefined ? (
-      <BarPlot data={currentOutput['output']} />
+      <BarPlot data={currentOutput['output']} params={params} />
     ) : null;
   }
 }
 
 LabelList.propTypes = {
   currentOutput: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
 };
 
 export default LabelList;

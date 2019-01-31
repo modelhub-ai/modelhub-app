@@ -19,6 +19,7 @@ class Heatmap extends Component {
 
 Heatmap.propTypes = {
   currentOutput: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
 };
 
 export default Heatmap;

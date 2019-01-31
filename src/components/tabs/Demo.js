@@ -107,6 +107,7 @@ class Demo extends Component {
               status={status}
               type={outputType}
               currentOutput={currentOutput}
+              params={fetches.config.modelhub}
             />
           }
         />

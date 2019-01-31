@@ -19,6 +19,7 @@ class MaskImage extends Component {
 
 MaskImage.propTypes = {
   currentOutput: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
 };
 
 export default MaskImage;

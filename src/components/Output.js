@@ -24,34 +24,42 @@ class Output extends Component {
    */
   getComponent(typeObject) {
     let outputDisplay;
-    const {currentOutput} = this.props;
+    const {currentOutput, params} = this.props;
     switch (typeObject) {
       // probabilities
       // json - no overlay
       case 'label_list':
-        outputDisplay = <LabelList currentOutput={currentOutput} />;
+        outputDisplay = (
+          <LabelList currentOutput={currentOutput} params={params} />
+        );
         break;
       // 1d vector
       // numpy - no overlay
       case 'vector':
-        outputDisplay = <Vector currentOutput={currentOutput} />;
+        outputDisplay = (
+          <Vector currentOutput={currentOutput} params={params} />
+        );
         break;
       // 2d or 3d, discrete values. 0 is always background, 1,2... are the
       // regions
       // numpy - yes overlay
       case 'mask_image':
-        outputDisplay = <MaskImage currentOutput={currentOutput} />;
+        outputDisplay = (
+          <MaskImage currentOutput={currentOutput} params={params} />
+        );
         break;
       // 2d grayscale, 2d multi, 3d grayscale, 3d multi.
       // If normalized, 1 is highest, 0 is lowest
       // numpy - overlay yes
       case 'heatmap':
-        outputDisplay = <Heatmap currentOutput={currentOutput} />;
+        outputDisplay = (
+          <Heatmap currentOutput={currentOutput} params={params} />
+        );
         break;
       // 2d grayscale, 2d multi, 3d grayscale, 3d multi
       // numpy - no overlay
       case 'image':
-        outputDisplay = <Image currentOutput={currentOutput} />;
+        outputDisplay = <Image currentOutput={currentOutput} params={params} />;
         break;
       // test-placeholder or custom
       case 'custom':
@@ -88,6 +96,7 @@ Output.propTypes = {
   status: PropTypes.string.isRequired,
   type: PropTypes.array.isRequired,
   currentOutput: PropTypes.object.isRequired,
+  params: PropTypes.object,
 };
 
 export default Output;

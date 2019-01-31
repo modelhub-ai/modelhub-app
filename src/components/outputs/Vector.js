@@ -19,6 +19,7 @@ class Vector extends Component {
 
 Vector.propTypes = {
   currentOutput: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
 };
 
 export default Vector;
