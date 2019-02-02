@@ -51,6 +51,7 @@ class ModelList extends Component {
                   thumbnail={thumbnail}
                   handleModelChoice={handleModelChoice}
                   currentModelIndex={currentModelIndex}
+                  models={models}
                 />
                 <Divider />
               </div>

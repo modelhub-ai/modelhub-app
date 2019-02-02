@@ -5,6 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import MenuItem from '@material-ui/core/MenuItem';
 import {withStyles} from '@material-ui/core/styles';
 import ListItemText from '@material-ui/core/ListItemText';
+import MenuTag from './MenuTag';
 
 const styles = (theme) => ({
   menuItem: {
@@ -35,6 +36,7 @@ class ModelItem extends Component {
       thumbnail,
       handleModelChoice,
       currentModelIndex,
+      models,
     } = this.props;
     return (
       <MenuItem
@@ -45,6 +47,7 @@ class ModelItem extends Component {
       >
         <GAvatar alt={primary} src={thumbnail} />
         <ListItemText inset primary={primary} secondary={secondary} />
+        <MenuTag models={models} value={value} />
       </MenuItem>
     );
   }
@@ -58,6 +61,7 @@ ModelItem.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   handleModelChoice: PropTypes.func.isRequired,
   currentModelIndex: PropTypes.number.isRequired,
+  models: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(ModelItem);
