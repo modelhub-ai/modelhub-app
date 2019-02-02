@@ -21,7 +21,7 @@ class Model extends Component {
       left: 16,
       fontSize: 11,
     });
-    switch (fetches.config.viewer) {
+    switch (model.viewer) {
       case 'netron':
         component = (
           <div>
@@ -29,7 +29,7 @@ class Model extends Component {
               title={'netron viewer'}
               height={'700'}
               width={'100%'}
-              src={model.viewer + fetches.config.model.format}
+              src={model.viewerURL + fetches.config.model.format}
               frameBorder={'0'}
             />
             <GDiv>
