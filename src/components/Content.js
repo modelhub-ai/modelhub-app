@@ -44,10 +44,10 @@ class Content extends Component {
   /**
    * Creates the list of tabs given the config
    * @param  {object} config config from REST API call
-   * @param  {object} init file from contrib_src
+   * @param  {object} model high level property
    * @return {array} array of tabs
    */
-  createTabList(config, init) {
+  createTabList(config, model) {
     const {deployed} = this.props.model;
     let tabs = [
       {
@@ -63,7 +63,7 @@ class Content extends Component {
       {
         name: 'Model',
         component: Model,
-        use: init['external_contrib_files'].length === 0 ? true : false,
+        use: model.viewer !== undefined ? true : false,
       },
       {
         name: 'Demo',
@@ -97,18 +97,19 @@ class Content extends Component {
   }
 
   /**
-   * fetches config and init, as well as samples and legal (if model is
+   * fetches config, as well as samples and legal (if model is
    * depolyed)
    * @param  {bool} deployed whether the model is running on a server or not.
    */
   fetchData(deployed) {
-    const {config, init, samples, legal} = this.props.model;
-    const arr = deployed ? [config, init, samples, legal] : [config, init];
+    const {model} = this.props;
+    const {config, samples, legal} = model;
+    const arr = deployed ? [config, samples, legal] : [config];
     Promise.all(
       arr.map((url) => fetch(url).then((response) => response.json()))
     ).then((result) => {
       // create tabs array
-      const tabs = this.createTabList(result[0], result[1]);
+      const tabs = this.createTabList(result[0], model);
       // filter out the ones not used
       const tabsFiletred = tabs.filter((tab) => {
         return tab.use === true;
@@ -117,8 +118,8 @@ class Content extends Component {
       this.setState({
         fetches: {
           config: result[0],
-          samples: deployed ? result[2] : {},
-          legal: deployed ? result[3] : {},
+          samples: deployed ? result[1] : {},
+          legal: deployed ? result[2] : {},
         },
         tabs: tabsFiletred,
       });
