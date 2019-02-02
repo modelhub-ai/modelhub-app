@@ -69,7 +69,8 @@ class ModelHub extends Component {
     const githubRaw = 'https://raw.githubusercontent.com/modelhub-ai/';
     model.entryPoint = githubRaw + name + '/' + github_branch;
     model.init = model.entryPoint + '/init/init.json';
-    model.viewer =
+    // viewerURL for all models regardless deployed or not.
+    model.viewerURL =
       'http://lutzroeder.github.io/netron/?url=' +
       model.entryPoint +
       '/contrib_src/model/model';
