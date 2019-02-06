@@ -1,8 +1,19 @@
 {
   "main.css": "static/css/main.65027555.css",
   "main.css.map": "static/css/main.65027555.css.map",
-  "main.js": "static/js/main.ac00806c.js",
-  "main.js.map": "static/js/main.ac00806c.js.map",
+  "main.js": "static/js/main.e7672342.js",
+  "main.js.map": "static/js/main.e7672342.js.map",
+  "static/media/caffe.png": "static/media/caffe.ac410abd.png",
+  "static/media/caffe2.jpg": "static/media/caffe2.f2603926.jpg",
+  "static/media/cloud.svg": "static/media/cloud.326e5948.svg",
+  "static/media/dl4j.png": "static/media/dl4j.b64fa6fa.png",
+  "static/media/keras.png": "static/media/keras.11010560.png",
   "static/media/logo-blue.svg": "static/media/logo-blue.1a84dbed.svg",
-  "static/media/logo-white.svg": "static/media/logo-white.8f9931a5.svg"
+  "static/media/logo-white.svg": "static/media/logo-white.8f9931a5.svg",
+  "static/media/mxnet.jpg": "static/media/mxnet.be872af7.jpg",
+  "static/media/netron.svg": "static/media/netron.45962116.svg",
+  "static/media/onnx.png": "static/media/onnx.d2e91121.png",
+  "static/media/pytorch.png": "static/media/pytorch.32475030.png",
+  "static/media/tensorflow.png": "static/media/tensorflow.546361cd.png",
+  "static/media/torch.png": "static/media/torch.0393d7b7.png"
 }
