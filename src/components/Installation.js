@@ -21,7 +21,7 @@ class Installation extends Component {
     const {name} = this.props;
     return (
       <GDiv>
-        <Typography variant="title">To run this model locally:</Typography>
+        <Typography variant="title">To run this model:</Typography>
         <br />
         <Typography variant="body2">
           1. Install{' '}
