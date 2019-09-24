@@ -28,7 +28,10 @@ class Installation extends Component {
           <a target={'_blank'} href={'https://docs.docker.com/install/'}>
             Docker
           </a>
-          . (CE is sufficient)
+          {' '}19.03 or newer (CE is sufficient). For GPU support, follow the instructions here:{' '}
+          <a target={'_blank'} href={'https://github.com/NVIDIA/nvidia-docker#quickstart'}>
+            Nvidia-Docker Toolkit
+          </a>
           <br />
           2. Install{' '}
           <a target={'_blank'} href={'https://www.python.org/'}>
@@ -36,47 +39,42 @@ class Installation extends Component {
           </a>{' '}
           or higher, if not already installed.
           <br />
-          3. Download the{' '}
-          <a
-            target={'_blank'}
-            href={
-              'https://raw.githubusercontent.com/modelhub-ai/modelhub/master/start.py'
-            }
-          >
-            modelhub start script
-          </a>{' '}
-          and place it into a new folder.
-          <br />
+          3. Install the modelhub-ai package: 
+          <TextPair
+            title={''}
+            body={`pip install modelhub-ai`}
+            spacer={10}
+            code
+          />
           4. Open a terminal and run the following:
-          <br />
-          <br />- to interact with the model using the modelhub REST API:{' '}
+          <br />- to interact with the model using the modelhub REST API{' '}
           <a
             target={'_blank'}
             href={
               'https://modelhub.readthedocs.io/en/latest/modelhubapi.html#rest-api'
             }
           >
-            (docs)
+            (docs):
           </a>{' '}
           <TextPair
             title={''}
-            body={`python start.py ${name}`}
+            body={`modelhub-run ${name}`}
             spacer={10}
             code
           />
           - or to interact with the model using the modelhub python API in a
-          jupyter notebook:{' '}
+          jupyter notebook{' '}
           <a
             target={'_blank'}
             href={
               'https://modelhub.readthedocs.io/en/latest/modelhubapi.html#python-api'
             }
           >
-            (docs)
+            (docs):
           </a>{' '}
           <TextPair
             title={''}
-            body={`python start.py ${name} -e`}
+            body={`modelhub-run ${name} -e`}
             spacer={10}
             code
           />
