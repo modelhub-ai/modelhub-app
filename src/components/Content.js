@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import ContentTabs from './ContentTabs';
-import Footer from './Footer';
 //
 import Overview from './tabs/Overview';
 import Publication from './tabs/Publication';
@@ -137,7 +136,6 @@ class Content extends Component {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <ContentTabs model={model} fetches={fetches} tabs={tabs} />
-        <Footer model={model} fetches={fetches} />
       </main>
     );
   }

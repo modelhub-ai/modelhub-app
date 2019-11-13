@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import Footer from './Footer';
 
 /**
  * TabContainer Class
@@ -16,6 +17,9 @@ class TabContainer extends Component {
     return (
       <div dir={dir} style={{padding: 8 * 3}}>
         <Component model={model} fetches={fetches} />
+        <br />
+        <br />
+        <Footer model={model} fetches={fetches} />
       </div>
     );
   }

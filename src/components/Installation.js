@@ -27,9 +27,13 @@ class Installation extends Component {
           1. Install{' '}
           <a target={'_blank'} href={'https://docs.docker.com/install/'}>
             Docker
-          </a>
-          {' '}19.03 or newer (CE is sufficient). For GPU support, follow the instructions here:{' '}
-          <a target={'_blank'} href={'https://github.com/NVIDIA/nvidia-docker#quickstart'}>
+          </a>{' '}
+          19.03 or newer (CE is sufficient). For GPU support, follow the
+          instructions here:{' '}
+          <a
+            target={'_blank'}
+            href={'https://github.com/NVIDIA/nvidia-docker#quickstart'}
+          >
             Nvidia-Docker Toolkit
           </a>
           <br />
@@ -39,7 +43,7 @@ class Installation extends Component {
           </a>{' '}
           or higher, if not already installed.
           <br />
-          3. Install the modelhub-ai package: 
+          3. Install the modelhub-ai package:
           <TextPair
             title={''}
             body={`pip install modelhub-ai`}
@@ -56,14 +60,9 @@ class Installation extends Component {
           >
             (docs):
           </a>{' '}
-          <TextPair
-            title={''}
-            body={`modelhub-run ${name}`}
-            spacer={10}
-            code
-          />
-          - or to interact with the model using the modelhub python API in a
-          jupyter notebook{' '}
+          <TextPair title={''} body={`modelhub ${name}`} spacer={10} code />- or
+          to interact with the model using the modelhub python API in a jupyter
+          notebook{' '}
           <a
             target={'_blank'}
             href={
@@ -72,12 +71,7 @@ class Installation extends Component {
           >
             (docs):
           </a>{' '}
-          <TextPair
-            title={''}
-            body={`modelhub-run ${name} -e`}
-            spacer={10}
-            code
-          />
+          <TextPair title={''} body={`modelhub ${name} -e`} spacer={10} code />
         </Typography>
         <br />
         For more information, please consult the{' '}
