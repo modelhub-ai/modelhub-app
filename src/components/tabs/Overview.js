@@ -22,7 +22,16 @@ class Overview extends Component {
     });
     return (
       <div>
-        <GTypography variant="display1">{meta.name}</GTypography>
+        <GTypography variant="display1">
+          {meta.name}{' '}
+          <a
+            target={'_blank'}
+            href={'https://github.com/modelhub-ai/' + meta.name}
+            style={{textDecoration: 'none', color: '#4285f4'}}
+          >
+            ↗
+          </a>
+        </GTypography>
         <TextPair title={'Description'} body={model.description} />
         <TextPair title={'Application'} body={meta.application_area} />
         <TextPair title={'Task'} body={meta.task + ': ' + meta.task_extended} />
