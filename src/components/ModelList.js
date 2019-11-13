@@ -5,6 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import ModelItem from './ModelItem';
 import MenuList from '@material-ui/core/MenuList';
+import MenuTag from './MenuTag';
 
 const styles = (theme) => ({
   drawerPaper: {
@@ -53,6 +54,7 @@ class ModelList extends Component {
                   currentModelIndex={currentModelIndex}
                   models={models}
                 />
+                <MenuTag models={models} value={index} />
                 <Divider />
               </div>
             );
