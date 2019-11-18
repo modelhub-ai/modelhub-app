@@ -53,8 +53,9 @@ class Footer extends Component {
   render() {
     const GDiv = glamorous.div({
       position: 'absolute',
-      bottom: 10,
+      bottom: 0,
       display: 'flex',
+      width: 700,
     });
     const GButton = glamorous(Button)({
       'textTransform': 'none !important',
