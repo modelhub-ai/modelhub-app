@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 import cloud from '../img/backends/cloud.svg';
 import netron from '../img/backends/netron.svg';
+import gpu from '../img/backends/gpu.svg';
 //
 import caffe from '../img/backends/caffe.svg';
 import caffe2 from '../img/backends/caffe2.svg';
@@ -115,6 +116,18 @@ class MenuTag extends React.Component {
   }
 
   /**
+   * @param  {bool} gpuFlag
+   * @return {string} or html
+   */
+  getGpu(gpuFlag) {
+    return gpuFlag ? (
+      <this.GImg title="Runs on a GPU." src={gpu} alt="gpu" />
+    ) : (
+      ''
+    );
+  }
+
+  /**
    * Renders MenuTag
    * @return {ReactElement}
    */
@@ -132,6 +145,7 @@ class MenuTag extends React.Component {
         {this.getDeployed(currentModel.deployed)}
         {this.getBackend(currentModel.backend)}
         {this.getViewer(currentModel.viewer)}
+        {this.getGpu(currentModel.gpu)}
       </GDivParent>
     );
   }
