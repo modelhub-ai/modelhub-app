@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import ContentTabs from './ContentTabs';
+
 //
 import Overview from './tabs/Overview';
 import Publication from './tabs/Publication';
@@ -15,6 +16,7 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
     minWidth: 0,
+    height: '100%',
   },
   toolbar: theme.mixins.toolbar,
 });
