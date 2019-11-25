@@ -3,7 +3,7 @@ import Header from './components/Header';
 import ModelHub from './components/ModelHub';
 /**
  * App class
- * Contains the ModelHub and Header components.
+ * Contains both the ModelHub and Header components.
  * @extends Component
  */
 class App extends Component {
