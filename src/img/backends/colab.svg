@@ -1,7 +1,83 @@
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;" width="977"  height="602" ><g>
-      <path d="M4.54,9.46,2.19,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36A3.59,3.59,0,0,1,4.54,9.46Z" style="" fill="#E8710A"></path>
-      <path d="M2.19,7.1,4.54,9.46a3.59,3.59,0,0,1,5.08,0l1.71-2.93h0l-.1-.08h0A6.93,6.93,0,0,0,2.19,7.1Z" style="" fill="#F9AB00"></path>
-      <path d="M11.34,17.46h0L9.62,14.54a3.59,3.59,0,0,1-5.08,0L2.19,16.9a6.93,6.93,0,0,0,9,.65l.11-.09" style="" fill="#F9AB00"></path>
-      <path d="M12,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36a3.59,3.59,0,1,1,5.08-5.08L21.81,7.1A6.93,6.93,0,0,0,12,7.1Z" style="" fill="#F9AB00"></path>
-      <path d="M21.81,7.1,19.46,9.46a3.59,3.59,0,0,1-5.08,5.08L12,16.9A6.93,6.93,0,0,0,21.81,7.1Z" style="" fill="#E8710A"></path>
-    </g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 2.4564995 1.9933555"
+   preserveAspectRatio="xMidYMid meet"
+   focusable="false"
+   style="display:block"
+   width="100"
+   height="50"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="colab.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata20">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs18" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2377"
+     inkscape:window-height="1894"
+     id="namedview16"
+     showgrid="false"
+     inkscape:zoom="12.544524"
+     inkscape:cx="38.86081"
+     inkscape:cy="43.038874"
+     inkscape:window-x="311"
+     inkscape:window-y="55"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg14" />
+  <g
+     id="g12"
+     transform="matrix(0.13798108,0,0,0.13798108,-0.42775968,-0.65898678)">
+    <path
+       d="M 4.54,9.46 2.19,7.1 a 6.93,6.93 0 0 0 0,9.79 L 4.55,14.53 A 3.59,3.59 0 0 1 4.54,9.46 Z"
+       style="fill:#e8710a"
+       id="path2"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 2.19,7.1 2.35,2.36 a 3.59,3.59 0 0 1 5.08,0 l 1.71,-2.93 v 0 l -0.1,-0.08 v 0 A 6.93,6.93 0 0 0 2.19,7.1 Z"
+       style="fill:#f9ab00"
+       id="path4"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 11.34,17.46 v 0 L 9.62,14.54 a 3.59,3.59 0 0 1 -5.08,0 L 2.19,16.9 a 6.93,6.93 0 0 0 9,0.65 l 0.11,-0.09"
+       style="fill:#f9ab00"
+       id="path6"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 12,7.1 a 6.93,6.93 0 0 0 0,9.79 l 2.36,-2.36 A 3.5921024,3.5921024 0 1 1 19.44,9.45 L 21.81,7.1 A 6.93,6.93 0 0 0 12,7.1 Z"
+       style="fill:#f9ab00"
+       id="path8"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 21.81,7.1 -2.35,2.36 a 3.5921024,3.5921024 0 0 1 -5.08,5.08 L 12,16.9 a 6.9331829,6.9331829 0 0 0 9.81,-9.8 z"
+       style="fill:#e8710a"
+       id="path10"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
