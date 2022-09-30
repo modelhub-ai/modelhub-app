@@ -16,6 +16,7 @@ import pytorch from '../img/backends/pytorch.svg';
 import tensorflow from '../img/backends/tensorflow.svg';
 import theano from '../img/backends/theano.svg';
 import torch from '../img/backends/torch.svg';
+import colab from '../img/backends/colab.svg';
 
 /**
  * MenuTag class
@@ -48,6 +49,7 @@ class MenuTag extends React.Component {
       tensorflow: tensorflow,
       theano: theano,
       torch: torch,
+      colab: colab,
     };
     this.state = {};
     this.getBackend = this.getBackend.bind(this);
