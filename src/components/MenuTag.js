@@ -68,7 +68,7 @@ class MenuTag extends React.Component {
           key={'backend_' + index}
           title={'Running on ' + backend + '.'}
           src={this.components[backend]}
-          alt="Netron"
+          alt="Backend"
         />
       );
     });
