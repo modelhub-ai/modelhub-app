@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TextPair from '../utils/TextPair';
 import AppButton from '../utils/AppButton';
+import ColabButton from '../utils/ColabButton';
 import Typography from '@material-ui/core/Typography';
 import glamorous from 'glamorous';
 import Installation from '../Installation';
@@ -20,30 +21,58 @@ class Overview extends Component {
     const GTypography = glamorous(Typography)({
       marginBottom: '25px !important',
     });
-    return (
-      <div>
-        <GTypography variant="display1">
-          {meta.name}{' '}
-          <a
-            target={'_blank'}
-            href={'https://github.com/modelhub-ai/' + meta.name}
-            style={{textDecoration: 'none', color: '#4285f4'}}
-          >
-            ↗
-          </a>
-        </GTypography>
-        <TextPair title={'Description'} body={model.description} />
-        <TextPair title={'Application'} body={meta.application_area} />
-        <TextPair title={'Task'} body={meta.task + ': ' + meta.task_extended} />
-        <TextPair title={'Type'} body={model.learning_type} />
-        <TextPair title={'Architecture'} body={model.architecture} />
-        <TextPair title={'Data'} body={meta.data_type} />
-        {meta.data_source !== undefined ? (
-          <AppButton text={'data source'} href={meta.data_source} />
-        ) : null}
-        <Installation name={meta.name} />
-      </div>
-    );
+
+    if (meta.framework == undefined) {
+      return (
+        <div>
+          <GTypography variant="display1">
+            {meta.name}{' '}
+            <a
+              target={'_blank'}
+              href={'https://github.com/modelhub-ai/' + meta.name}
+              style={{textDecoration: 'none', color: '#4285f4'}}
+            >
+              ↗
+            </a>
+          </GTypography>
+          <TextPair title={'Description'} body={model.description} />
+          <TextPair title={'Application'} body={meta.application_area} />
+          <TextPair title={'Task'} body={meta.task + ': ' + meta.task_extended} />
+          <TextPair title={'Type'} body={model.learning_type} />
+          <TextPair title={'Architecture'} body={model.architecture} />
+          <TextPair title={'Data'} body={meta.data_type} />
+          {meta.data_source !== undefined ? (
+            <AppButton text={'data source'} href={meta.data_source} />
+          ) : null}
+          <Installation name={meta.name} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <GTypography variant="display1">
+            {meta.name}{' '}
+            <a
+              target={'_blank'}
+              href={meta.colab_link}
+              style={{textDecoration: 'none', color: '#f9ab00'}}
+            >
+              ↗
+            </a>
+          </GTypography>
+          <TextPair title={'Description'} body={model.description} />
+          <TextPair title={'Application'} body={meta.application_area} />
+          <TextPair title={'Task'} body={meta.task + ': ' + meta.task_extended} />
+          <TextPair title={'Type'} body={model.learning_type} />
+          <TextPair title={'Architecture'} body={model.architecture} />
+          <TextPair title={'Data'} body={meta.data_type} />
+          {meta.colab_link !== undefined ? (
+            <ColabButton text={'CoLab Notebook'} href={meta.colab_link} />
+          ) : null}
+
+        </div>
+      );
+    }
   }
 }
 
