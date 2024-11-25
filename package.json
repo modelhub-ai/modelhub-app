@@ -15,7 +15,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-plotly.js": "^2.2.0",
-    "react-scripts": "^1.1.4",
+    "react-scripts": "^5.0.1",
     "react-swipeable-views": "^0.12.14"
   },
   "scripts": {
